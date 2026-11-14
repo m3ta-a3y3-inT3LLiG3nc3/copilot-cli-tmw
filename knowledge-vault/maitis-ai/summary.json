@@ -1,0 +1,53 @@
+{
+  "total_tools": 763,
+  "total_workflows": 24,
+  "tool_categories": {
+    "AI Agents & Automation": 90,
+    "Productivity & Notes": 78,
+    "Video Generation": 72,
+    "Marketing & Sales": 49,
+    "Chatbots & Assistants": 44,
+    "Image Generation": 36,
+    "Audio, Voice & Music": 35,
+    "SEO & AI Search": 35,
+    "No-Code & App Builders": 34,
+    "Writing & Copywriting": 34,
+    "Coding & Development": 34,
+    "Education & Learning": 31,
+    "Design & Creative": 25,
+    "Social Media": 25,
+    "Image Editing": 21,
+    "Video Editing & Clips": 19,
+    "AI Detection & Humanisers": 18,
+    "Advertising": 17,
+    "Data & Analytics": 14,
+    "Meetings & Transcription": 13,
+    "Finance & Accounting": 11,
+    "Careers & Recruiting": 8,
+    "Presentations & Slides": 8,
+    "Translation": 6,
+    "E-commerce": 5,
+    "Health": 1
+  },
+  "workflow_categories": {
+    "Vibe Coding": 4,
+    "AI Tools": 4,
+    "Content Creation": 3,
+    "Career and Jobs": 2,
+    "Business and Startups": 2,
+    "Video Generation": 2,
+    "Marketing": 1,
+    "Sales": 1,
+    "AI Agents": 1,
+    "Research": 1,
+    "Automation": 1,
+    "Prompting": 1,
+    "Data and Analytics": 1
+  },
+  "pricing_breakdown": {
+    "freemium": 472,
+    "paid": 248,
+    "free": 41,
+    "null": 2
+  }
+}

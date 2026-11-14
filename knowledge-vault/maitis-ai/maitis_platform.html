@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maitis AI — Be 100x with AI</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background,#090d16)] text-[var(--foreground,#f1f5f9)] min-h-screen antialiased flex flex-col font-sans">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 border-b border-[var(--border,rgba(255,255,255,0.08))] bg-[var(--background,#090d16)]/90 backdrop-blur-md px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-bold text-black text-lg shadow-lg shadow-emerald-500/20">
+        M
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-extrabold text-base tracking-tight text-[var(--foreground,#ffffff)]">Maitis</span>
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">PROMPTS & TOOLS</span>
+        </div>
+        <p class="text-[11px] text-[var(--muted-foreground,#94a3b8)] hidden sm:block">Be 100x with AI • Free Community Library</p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="flex items-center gap-1.5 bg-[var(--card,#131b2e)] p-1 rounded-xl border border-[var(--border,rgba(255,255,255,0.08))]">
+      <button onclick="switchTab('library')" id="tab-library" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all bg-emerald-500 text-black shadow-sm">
+        📚 Workflows
+      </button>
+      <button onclick="switchTab('tools')" id="tab-tools" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-[var(--muted-foreground,#94a3b8)] hover:text-white">
+        ⚡ AI Tools <span id="tools-badge" class="ml-1 px-1.5 py-0.2 rounded-full text-[10px] bg-white/10">763</span>
+      </button>
+      <button onclick="switchTab('saved')" id="tab-saved" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-[var(--muted-foreground,#94a3b8)] hover:text-white">
+        ⭐ Saved <span id="saved-badge" class="ml-1 px-1.5 py-0.2 rounded-full text-[10px] bg-white/10">0</span>
+      </button>
+      <button onclick="switchTab('admin')" id="tab-admin" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-[var(--muted-foreground,#94a3b8)] hover:text-white">
+        🛠️ Portal (#admin)
+      </button>
+    </nav>
+
+    <!-- Auth / Member Status -->
+    <div class="flex items-center gap-2.5">
+      <div id="member-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="member-name">Member Access</span>
+      </div>
+      <button onclick="openOnboarding()" id="btn-unlock" class="text-xs px-3.5 py-1.5 rounded-lg font-semibold bg-gradient-to-r from-emerald-500 to-teal-400 text-black hover:opacity-90 transition-opacity">
+        Unlock All
+      </button>
+    </div>
+  </header>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-12 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2.5 bg-emerald-500 text-black px-4 py-2.5 rounded-xl font-medium text-xs shadow-2xl shadow-emerald-500/30">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <span id="toast-text">Copied to clipboard!</span>
+  </div>
+
+  <!-- MAIN VIEWS CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8">
+
+    <!-- VIEW 1: WORKFLOWS & PROMPTS LIBRARY -->
+    <section id="view-library" class="space-y-6">
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden rounded-2xl border border-[var(--border,rgba(255,255,255,0.08))] bg-gradient-to-br from-emerald-950/40 via-[var(--card,#131b2e)] to-[var(--card,#131b2e)] p-6 sm:p-8">
+        <div class="max-w-2xl space-y-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-[11px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            🔥 Video Tutorials & Ready-to-Run Prompts
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            Every prompt, workflow, and tool in one place.
+          </h1>
+          <p class="text-sm text-[var(--muted-foreground,#94a3b8)] leading-relaxed">
+            Tested step-by-step AI workflows with ready-to-paste prompts. Click any guide below to view the entire action blueprint.
+          </p>
+        </div>
+      </div>
+
+      <!-- Categories & Search Bar -->
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 custom-scrollbar" id="workflow-categories">
+          <!-- Populated by JS -->
+        </div>
+        <div class="relative w-full sm:w-72">
+          <input type="text" id="workflow-search" oninput="renderWorkflows()" placeholder="Search workflows & prompts..." 
+            class="w-full bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.1))] rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-emerald-500 text-white placeholder-slate-400">
+        </div>
+      </div>
+
+      <!-- Workflows Grid -->
+      <div id="workflows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Cards injected by JS -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: AI TOOLS DIRECTORY -->
+    <section id="view-tools" class="hidden space-y-6">
+      <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between pb-4 border-b border-[var(--border,rgba(255,255,255,0.08))]">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight text-white">AI Tools Directory</h2>
+          <p class="text-xs text-[var(--muted-foreground,#94a3b8)] mt-0.5">Explore curated tools categorized by use-case with verified pricing.</p>
+        </div>
+        <!-- Search & Filter Controls -->
+        <div class="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+          <input type="text" id="tool-search" oninput="renderTools()" placeholder="Search by name, keyword or tag..."
+            class="w-full sm:w-64 bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.1))] rounded-xl px-3.5 py-2 text-xs focus:outline-none focus:border-emerald-500 text-white placeholder-slate-400">
+          <select id="pricing-filter" onchange="renderTools()" class="bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.1))] text-xs text-white rounded-xl px-3 py-2 focus:outline-none">
+            <option value="all">All Pricing</option>
+            <option value="free">Free</option>
+            <option value="freemium">Freemium</option>
+            <option value="paid">Paid</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tool Category Pills -->
+      <div class="flex items-center gap-1.5 overflow-x-auto pb-2 custom-scrollbar" id="tool-categories">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Tools Count Bar -->
+      <div class="flex items-center justify-between text-xs text-[var(--muted-foreground,#94a3b8)]">
+        <div>Showing <span id="tools-rendered-count" class="font-bold text-white">0</span> tools</div>
+        <div class="text-[11px]">Click ⭐ to bookmark any tool to your saved drawer</div>
+      </div>
+
+      <!-- Tools Grid -->
+      <div id="tools-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+        <!-- Injected by JS -->
+      </div>
+    </section>
+
+    <!-- VIEW 3: SAVED BOOKMARKS -->
+    <section id="view-saved" class="hidden space-y-6">
+      <div class="pb-4 border-b border-[var(--border,rgba(255,255,255,0.08))]">
+        <h2 class="text-2xl font-bold tracking-tight text-white">Saved Bookmarks</h2>
+        <p class="text-xs text-[var(--muted-foreground,#94a3b8)] mt-0.5">Your personal collection of saved prompts, workflows, and AI tools.</p>
+      </div>
+      <div id="saved-empty" class="text-center py-16 space-y-3">
+        <div class="text-3xl">⭐</div>
+        <div class="text-sm font-semibold text-white">No saved items yet</div>
+        <p class="text-xs text-slate-400 max-w-sm mx-auto">Click the star icon on any workflow card or tool in the directory to save it here for fast reference.</p>
+      </div>
+      <div id="saved-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- VIEW 4: CONTENT PORTAL & DOC CONVERTER (#admin) -->
+    <section id="view-admin" class="hidden space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-[var(--border,rgba(255,255,255,0.08))]">
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="text-2xl font-bold tracking-tight text-white">Content Portal & Doc Converter</h2>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">Admin Mode</span>
+          </div>
+          <p class="text-xs text-[var(--muted-foreground,#94a3b8)] mt-0.5">Upload notes, docs, or guides to convert into structured step-by-step topics with prompt boxes.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Input Form -->
+        <div class="space-y-4 bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.08))] rounded-2xl p-5">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span>📝</span> Document & Notes Importer
+          </h3>
+          <div class="space-y-2">
+            <label class="text-xs font-semibold text-slate-300">Topic Title</label>
+            <input id="admin-title" type="text" value="Automate Customer Outreach with DeepSeek & Make" 
+              class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs font-semibold text-slate-300">Category</label>
+              <select id="admin-category" class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+                <option>AI Agents</option>
+                <option>Career and Jobs</option>
+                <option>Vibe Coding</option>
+                <option>Marketing</option>
+                <option>Sales</option>
+                <option>Automation</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-xs font-semibold text-slate-300">Summary</label>
+              <input id="admin-summary" type="text" value="Extract leads, score fit with DeepSeek, and draft personalized emails." 
+                class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-semibold text-slate-300">Paste Raw Guide / Transcript</label>
+              <span class="text-[11px] text-slate-400">Supports ``` Prompt: ... fences</span>
+            </div>
+            <textarea id="admin-raw-text" rows="10" class="w-full bg-slate-900/80 border border-white/10 rounded-xl p-3 text-xs font-mono text-slate-200 focus:outline-none focus:border-emerald-500 leading-relaxed custom-scrollbar" placeholder="Paste your draft guide here..."></textarea>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="convertDocToTopic()" class="flex-1 py-2 px-4 rounded-xl font-semibold text-xs bg-emerald-500 hover:bg-emerald-400 text-black transition-colors shadow-lg shadow-emerald-500/20">
+              ⚡ Convert Document into Structured Topic
+            </button>
+            <button onclick="loadSampleDoc()" class="py-2 px-3 rounded-xl font-semibold text-xs bg-white/10 hover:bg-white/20 text-white transition-colors">
+              Load Sample
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Converted Preview -->
+        <div class="space-y-4 bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.08))] rounded-2xl p-5">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <span>👁️</span> Live Topic Parser Preview
+            </h3>
+            <button onclick="publishTopicFromAdmin()" class="px-3 py-1 text-xs rounded-lg font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/30">
+              + Add to Live Library
+            </button>
+          </div>
+          <div id="admin-preview-container" class="space-y-3 custom-scrollbar max-h-[500px] overflow-y-auto pr-1">
+            <div class="p-4 rounded-xl bg-slate-900/50 border border-white/5 text-center text-xs text-slate-400">
+              Click "Convert Document" or "Load Sample" to generate the step-by-step topic preview.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: WORKFLOW DETAIL MODAL -->
+  <div id="workflow-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6">
+    <div class="bg-[var(--card,#111827)] border border-white/10 rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-white/10 flex items-start justify-between bg-slate-900/60">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span id="modal-category" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Category</span>
+            <span id="modal-date" class="text-[11px] text-slate-400">Date</span>
+          </div>
+          <h2 id="modal-title" class="text-lg sm:text-xl font-bold text-white">Topic Title</h2>
+          <p id="modal-summary" class="text-xs text-slate-300"></p>
+        </div>
+        <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm font-bold transition-colors">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body (Steps, Prompts, Tools) -->
+      <div id="modal-body" class="p-5 sm:p-6 space-y-6 overflow-y-auto custom-scrollbar flex-1">
+        <!-- Steps and tools injected by JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-white/10 bg-slate-900/60 flex items-center justify-between text-xs">
+        <span class="text-slate-400">Maitis Ready-to-Run Workflow</span>
+        <button onclick="closeModal()" class="px-4 py-1.5 rounded-lg font-semibold bg-white/10 text-white hover:bg-white/20">
+          Close Guide
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: LEAD ONBOARDING MODAL -->
+  <div id="onboarding-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[var(--card,#111827)] border border-emerald-500/30 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="text-center space-y-1">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-bold text-black text-xl mx-auto shadow-lg shadow-emerald-500/20">
+          M
+        </div>
+        <h3 class="text-lg font-bold text-white">Join the Maitis AI Community</h3>
+        <p class="text-xs text-slate-400">One quick form, then the full library of 763 tools and 24 workflows is unlocked.</p>
+      </div>
+
+      <form id="onboarding-form" onsubmit="handleOnboardingSubmit(event)" class="space-y-3">
+        <div>
+          <label class="text-xs text-slate-300 font-medium">Your Name</label>
+          <input required id="ob-name" type="text" placeholder="Alex Rivers" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 font-medium">Email Address</label>
+          <input required id="ob-email" type="email" placeholder="alex@example.com" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="text-xs text-slate-300 font-medium">Country</label>
+            <select id="ob-country" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+              <option>United States (+1)</option>
+              <option>United Kingdom (+44)</option>
+              <option>India (+91)</option>
+              <option>Canada (+1)</option>
+              <option>Australia (+61)</option>
+              <option>Germany (+49)</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs text-slate-300 font-medium">Do you know coding?</label>
+            <select id="ob-coding" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-slate-300 font-medium">What describes you best?</label>
+          <select id="ob-role" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+            <option>Founder or business owner</option>
+            <option>Working professional</option>
+            <option>Freelancer or consultant</option>
+            <option>Content creator</option>
+            <option>Student</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 rounded-xl font-bold text-xs bg-emerald-500 hover:bg-emerald-400 text-black transition-colors shadow-lg shadow-emerald-500/20">
+          Get Free Instant Access
+        </button>
+      </form>
+      <div class="text-center">
+        <button onclick="closeOnboarding()" class="text-[11px] text-slate-400 hover:text-white">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- STATE MANAGEMENT ---
+    let activeTab = 'library';
+    let currentWorkflowCategory = 'All';
+    let currentToolCategory = 'All';
+    let savedItems = JSON.parse(localStorage.getItem('maitis_saved_items') || '[]');
+    let isMember = Boolean(localStorage.getItem('maitis.member.v1'));
+
+    // --- CURATED DATA EMBED (Real Workflows from maitis.ai) ---
+    const WORKFLOWS = [
+      {
+        id: "019",
+        date: "2026-04-18",
+        title: "Apply to 100 jobs in one night with ChatGPT",
+        category: "Career and Jobs",
+        summary: "Transform your resume into a Google XYZ format, map target roles, and run automated application queries.",
+        items: [
+          {
+            type: "steps",
+            steps: [
+              {
+                title: "1. Load your resume & map roles",
+                text: "Upload your resume in ChatGPT and run the recruiter mapping prompt:\n\n``` Prompt: Recruiter Map\nAct as a senior recruiter. Based on my uploaded resume, list the top 5 high-leverage job titles, required hard skills, and 10 ATS search keywords for matching.\n```"
+              },
+              {
+                title: "2. Build your master resume (Google XYZ formula)",
+                text: "Convert your bullet points to high-conversion impact statements:\n\n``` Prompt: Master Resume Formula\nTurn my resume bullets into the Google XYZ formula: 'Accomplished [X] as measured by [Y] by doing [Z]'. Remove filler and optimize for 95%+ ATS score.\n```"
+              },
+              {
+                title: "3. Search and tailor cover letters",
+                text: "Generate tailored outreach for target jobs:\n\n``` Prompt: Tailored Outreach\nCompare my master resume with this job description. Output: 1) Match Score (0-100), 2) Top 3 matching strengths, 3) A 120-word personalized cold message to the hiring manager.\n```"
+              }
+            ]
+          },
+          { type: "tool", label: "ChatGPT", url: "https://chatgpt.com" },
+          { type: "tool", label: "LinkedIn", url: "https://linkedin.com" }
+        ]
+      },
+      {
+        id: "018",
+        date: "2026-04-12",
+        title: "Test your launch on an AI crowd with MiroFish",
+        category: "Business and Startups",
+        summary: "Simulate a multi-persona consumer crowd reacting to your product launch before spending on ads.",
+        items: [
+          {
+            type: "steps",
+            steps: [
+              {
+                title: "1. Setup environment file",
+                text: "Clone MiroFish and prepare configuration:\n\n``` Command: Setup\ncp .env.example .env\n# Fill in LLM_API_KEY and model configuration\n```"
+              },
+              {
+                title: "2. Define personas & test pitch",
+                text: "Prompt the virtual focus group:\n\n``` Prompt: Synthetic Focus Group\nSimulate 10 diverse target consumers (3 skeptics, 4 early adopters, 3 price-conscious buyers). Evaluate this product pitch and list immediate objections.\n```"
+              }
+            ]
+          },
+          { type: "tool", label: "MiroFish", url: "https://github.com/666ghz/MiroFish" }
+        ]
+      },
+      {
+        id: "017",
+        date: "2026-04-05",
+        title: "Set up a free AI sales agent with Harvey",
+        category: "Sales",
+        summary: "Deploy an autonomous inbound sales agent that qualifies leads and responds to inquiries 24/7.",
+        items: [
+          {
+            type: "steps",
+            steps: [
+              {
+                title: "1. Deploy sales agent harness",
+                text: "Install Harvey via Claude Code:\n\n``` Prompt: Deploy Harvey Agent\nSet up Harvey for me from scratch. Clone https://github.com/ethanplusai/harvey.git, configure SQLite storage, and run the inbound lead qualifying pipeline.\n```"
+              }
+            ]
+          },
+          { type: "tool", label: "Harvey Sales Agent", url: "https://github.com/ethanplusai/harvey" }
+        ]
+      },
+      {
+        id: "016",
+        date: "2026-03-28",
+        title: "Build a Full-Stack Web App in 10 Minutes with v0 & Claude",
+        category: "Vibe Coding",
+        summary: "Rapidly scaffold interactive dashboards and SaaS apps with Next.js, Tailwind, and AI code generation.",
+        items: [
+          {
+            type: "steps",
+            steps: [
+              {
+                title: "1. Design UI components in v0",
+                text: "Generate clean React UI components:\n\n``` Prompt: v0 Design Prompt\nCreate a modern analytics dashboard with a sidebar, stat cards for MRR/Churn, a line chart of weekly revenue, and a dark mode toggle using Tailwind CSS.\n```"
+              },
+              {
+                title: "2. Wire API logic with Claude Code",
+                text: "Implement backend endpoints and state management:\n\n``` Prompt: Backend Wiring\nTake this v0 component, add Supabase authentication, create a mock data provider, and write end-to-end TypeScript types.\n```"
+              }
+            ]
+          },
+          { type: "tool", label: "v0 by Vercel", url: "https://v0.dev" },
+          { type: "tool", label: "Claude Code", url: "https://claude.ai" }
+        ]
+      },
+      {
+        id: "015",
+        date: "2026-03-20",
+        title: "Turn Long Podcasts into 10 Viral Short Clips with Opus Clip",
+        category: "Content Creation",
+        summary: "Automate video hook detection, dynamic AI captions, and 9:16 re-framing for TikTok and Reels.",
+        items: [
+          {
+            type: "steps",
+            steps: [
+              {
+                title: "1. Extract high-virality moments",
+                text: "Submit video URL and apply automated hook scoring (90+ virality score filter)."
+              },
+              {
+                title: "2. Customize animated captions & B-roll",
+                text: "Select Hormozi-style subtitle animation and auto-insert visual emojis."
+              }
+            ]
+          },
+          { type: "tool", label: "Opus Clip", url: "https://opus.pro" }
+        ]
+      },
+      {
+        id: "014",
+        date: "2026-03-15",
+        title: "Autonomous Web Research Agent with Deep Research & Perplexity",
+        category: "Research",
+        summary: "Synthesize 50+ academic and market sources into a structured 15-page intelligence report.",
+        items: [
+          {
+            type: "steps",
+            steps: [
+              {
+                title: "1. Configure research query & constraints",
+                text: "Formulate research objective:\n\n``` Prompt: Deep Research Brief\nAnalyze the competitive landscape of AI Code Review agents in 2026. Detail: market size, key players, enterprise pricing models, and architectural bottlenecks.\n```"
+              }
+            ]
+          },
+          { type: "tool", label: "Perplexity AI", url: "https://perplexity.ai" }
+        ]
+      }
+    ];
+
+    // --- REPRESENTATIVE CURATED TOOLS FROM THE 763 CATALOG ---
+    const TOOLS = [
+      { id: "cursor", name: "Cursor", category: "Coding & Development", tag: "AI-first code editor", description: "Built on VS Code with built-in agentic editing, multi-file code generation, and terminal intelligence.", pricing: "Free tier / $20 mo", priceType: "freemium", url: "https://cursor.com" },
+      { id: "v0", name: "v0 by Vercel", category: "No-Code & App Builders", tag: "Generative UI builder", description: "Generates production-grade React, Tailwind, and Next.js UI components from plain text prompts.", pricing: "Free credits / $20 mo", priceType: "freemium", url: "https://v0.dev" },
+      { id: "10web", name: "10Web", category: "No-Code & App Builders", tag: "AI WordPress builder", description: "Builds, redesigns and hosts WordPress sites with AI agents, including online stores and Figma import.", pricing: "Free plan available", priceType: "freemium", url: "https://10web.io" },
+      { id: "claude", name: "Claude 3.7 Sonnet", category: "Chatbots & Assistants", tag: "Hybrid reasoning model", description: "Anthropic's flagship model featuring instant responses and extended chain-of-thought reasoning.", pricing: "Free / $20 mo Pro", priceType: "freemium", url: "https://claude.ai" },
+      { id: "chatgpt", name: "ChatGPT (GPT-4o)", category: "Chatbots & Assistants", tag: "Omni multimodal assistant", description: "Industry-standard conversational AI with web browsing, code execution, vision, and voice.", pricing: "Free / $20 mo", priceType: "freemium", url: "https://chatgpt.com" },
+      { id: "midjourney", name: "Midjourney v7", category: "Image Generation", tag: "Hyper-realistic image generator", description: "State-of-the-art photorealistic art and visual generation via web and Discord interfaces.", pricing: "$10 / mo", priceType: "paid", url: "https://midjourney.com" },
+      { id: "runway", name: "Runway Gen-3 Alpha", category: "Video Generation", tag: "Cinematic video generation", description: "High-fidelity text-to-video, image-to-video, and motion control for video creators.", pricing: "Free credits / $15 mo", priceType: "freemium", url: "https://runwayml.com" },
+      { id: "kling", name: "Kling AI", category: "Video Generation", tag: "High-physics video model", description: "Generates realistic 1080p video clips up to 2 minutes with accurate motion physics.", pricing: "Free daily credits", priceType: "freemium", url: "https://klingai.com" },
+      { id: "elevenlabs", name: "ElevenLabs", category: "Audio, Voice & Music", tag: "Voice synthesis & cloning", description: "Lifelike text-to-speech, voice cloning, and multilingual sound effect generator.", pricing: "Free / $5 mo", priceType: "freemium", url: "https://elevenlabs.io" },
+      { id: "suno", name: "Suno AI", category: "Audio, Voice & Music", tag: "Full-song generator", description: "Creates full vocal tracks, instrumentals, and lyrics across any musical genre from text.", pricing: "Free / $10 mo", priceType: "freemium", url: "https://suno.com" },
+      { id: "perplexity", name: "Perplexity AI", category: "SEO & AI Search", tag: "Conversational answer engine", description: "Real-time search engine with inline citations, research threads, and deep reasoning.", pricing: "Free / $20 mo Pro", priceType: "freemium", url: "https://perplexity.ai" },
+      { id: "notion-ai", name: "Notion AI", category: "Productivity & Notes", tag: "Workspace intelligence", description: "Integrated note taking, automated meeting summaries, and document Q&A across Notion pages.", pricing: "$10 / mo add-on", priceType: "paid", url: "https://notion.so" },
+      { id: "make", name: "Make.com", category: "AI Agents & Automation", tag: "Visual automation canvas", description: "Connects 1500+ apps with AI steps to build complex end-to-end automated pipelines.", pricing: "Free plan / $9 mo", priceType: "freemium", url: "https://make.com" },
+      { id: "n8n", name: "n8n", category: "AI Agents & Automation", tag: "Self-hostable workflow agent", description: "Fair-code workflow automation tool with native AI agent nodes and LangChain integration.", pricing: "Free open source", priceType: "free", url: "https://n8n.io" },
+      { id: "gamma", name: "Gamma", category: "Presentations & Slides", tag: "AI deck & doc generator", description: "Transforms ideas and documents into polished presentation decks and webpages in seconds.", pricing: "Free / $10 mo", priceType: "freemium", url: "https://gamma.app" },
+      { id: "copy-ai", name: "Copy.ai", category: "Writing & Copywriting", tag: "GTM marketing automation", description: "AI copywriting and marketing workflow engine designed for sales and marketing teams.", pricing: "Free / $36 mo", priceType: "freemium", url: "https://copy.ai" }
+    ];
+
+    // --- TAB SWITCHING ---
+    function switchTab(tab) {
+      activeTab = tab;
+      ['library', 'tools', 'saved', 'admin'].forEach(t => {
+        const btn = document.getElementById('tab-' + t);
+        const view = document.getElementById('view-' + t);
+        if (t === tab) {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all bg-emerald-500 text-black shadow-sm';
+          view.classList.remove('hidden');
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-[var(--muted-foreground,#94a3b8)] hover:text-white';
+          view.classList.add('hidden');
+        }
+      });
+      if (tab === 'saved') renderSaved();
+    }
+
+    // --- WORKFLOW RENDERING ---
+    function initWorkflowCategories() {
+      const cats = ['All', ...new Set(WORKFLOWS.map(w => w.category))];
+      const container = document.getElementById('workflow-categories');
+      container.innerHTML = cats.map(cat => `
+        <button onclick="setWorkflowCategory('${cat}')" 
+          class="px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-all ${currentWorkflowCategory === cat ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-slate-800/60 text-slate-400 hover:text-white border border-white/5'}">
+          ${cat}
+        </button>
+      `).join('');
+    }
+
+    function setWorkflowCategory(cat) {
+      currentWorkflowCategory = cat;
+      initWorkflowCategories();
+      renderWorkflows();
+    }
+
+    function renderWorkflows() {
+      const query = (document.getElementById('workflow-search')?.value || '').toLowerCase();
+      const filtered = WORKFLOWS.filter(w => {
+        const matchCat = currentWorkflowCategory === 'All' || w.category === currentWorkflowCategory;
+        const matchQuery = w.title.toLowerCase().includes(query) || w.summary.toLowerCase().includes(query);
+        return matchCat && matchQuery;
+      });
+
+      const grid = document.getElementById('workflows-grid');
+      grid.innerHTML = filtered.map(w => {
+        const isSaved = savedItems.some(i => i.id === w.id);
+        return `
+          <div class="group relative flex flex-col justify-between rounded-2xl bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.08))] hover:border-emerald-500/40 p-5 transition-all duration-200 hover:-translate-y-0.5 shadow-lg">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  ${w.category}
+                </span>
+                <button onclick="toggleSave('${w.id}', 'workflow')" class="p-1 text-slate-400 hover:text-yellow-400 transition-colors">
+                  ${isSaved ? '⭐' : '☆'}
+                </button>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
+                ${w.title}
+              </h3>
+              <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                ${w.summary}
+              </p>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+              <span class="text-[11px] text-slate-400">Step-by-step Guide</span>
+              <button onclick="openWorkflowModal('${w.id}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-black transition-colors shadow-sm">
+                View Prompts →
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- TOOLS RENDERING ---
+    function initToolCategories() {
+      const cats = ['All', 'Coding & Development', 'AI Agents & Automation', 'No-Code & App Builders', 'Chatbots & Assistants', 'Image Generation', 'Video Generation', 'Audio, Voice & Music', 'SEO & AI Search', 'Productivity & Notes', 'Writing & Copywriting'];
+      const container = document.getElementById('tool-categories');
+      container.innerHTML = cats.map(cat => `
+        <button onclick="setToolCategory('${cat}')" 
+          class="px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-all ${currentToolCategory === cat ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' : 'bg-slate-800/60 text-slate-400 hover:text-white border border-white/5'}">
+          ${cat}
+        </button>
+      `).join('');
+    }
+
+    function setToolCategory(cat) {
+      currentToolCategory = cat;
+      initToolCategories();
+      renderTools();
+    }
+
+    function renderTools() {
+      const query = (document.getElementById('tool-search')?.value || '').toLowerCase();
+      const priceFilter = document.getElementById('pricing-filter')?.value || 'all';
+
+      const filtered = TOOLS.filter(t => {
+        const matchCat = currentToolCategory === 'All' || t.category === currentToolCategory;
+        const matchPrice = priceFilter === 'all' || t.priceType === priceFilter;
+        const matchQuery = t.name.toLowerCase().includes(query) || t.description.toLowerCase().includes(query) || t.tag.toLowerCase().includes(query);
+        return matchCat && matchPrice && matchQuery;
+      });
+
+      document.getElementById('tools-rendered-count').innerText = filtered.length;
+      const grid = document.getElementById('tools-grid');
+      grid.innerHTML = filtered.map(t => {
+        const isSaved = savedItems.some(i => i.id === t.id);
+        const priceBadgeClass = t.priceType === 'free' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : t.priceType === 'freemium' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+        return `
+          <div class="group flex flex-col justify-between rounded-xl bg-[var(--card,#131b2e)] border border-[var(--border,rgba(255,255,255,0.08))] p-4 hover:border-emerald-500/40 transition-all hover:-translate-y-0.5">
+            <div>
+              <div class="flex items-start justify-between gap-2">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center font-bold text-xs text-emerald-400">
+                    ${t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h4 class="text-xs font-bold text-white group-hover:text-emerald-400 transition-colors">${t.name}</h4>
+                    <span class="text-[10px] text-slate-400 block">${t.tag}</span>
+                  </div>
+                </div>
+                <button onclick="toggleSave('${t.id}', 'tool')" class="text-xs text-slate-400 hover:text-yellow-400">
+                  ${isSaved ? '⭐' : '☆'}
+                </button>
+              </div>
+              <p class="text-xs text-slate-300 mt-2.5 leading-relaxed line-clamp-2">
+                ${t.description}
+              </p>
+            </div>
+
+            <div class="mt-3.5 pt-3 border-t border-white/5 flex items-center justify-between text-[11px]">
+              <span class="px-2 py-0.5 rounded border text-[10px] font-medium ${priceBadgeClass}">
+                ${t.pricing}
+              </span>
+              <a href="${t.url}" target="_blank" rel="noopener noreferrer" class="font-semibold text-emerald-400 hover:underline flex items-center gap-1">
+                Open ↗
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- SAVED ITEMS MANAGEMENT ---
+    function toggleSave(id, type) {
+      const idx = savedItems.findIndex(i => i.id === id);
+      if (idx > -1) {
+        savedItems.splice(idx, 1);
+        showToast('Removed from saved');
+      } else {
+        savedItems.push({ id, type, savedAt: new Date().toISOString() });
+        showToast('⭐ Saved to your library!');
+      }
+      localStorage.setItem('maitis_saved_items', JSON.stringify(savedItems));
+      updateSavedBadge();
+      renderWorkflows();
+      renderTools();
+      if (activeTab === 'saved') renderSaved();
+    }
+
+    function updateSavedBadge() {
+      document.getElementById('saved-badge').innerText = savedItems.length;
+    }
+
+    function renderSaved() {
+      const empty = document.getElementById('saved-empty');
+      const grid = document.getElementById('saved-grid');
+      if (savedItems.length === 0) {
+        empty.classList.remove('hidden');
+        grid.innerHTML = '';
+        return;
+      }
+      empty.classList.add('hidden');
+
+      const savedHtml = savedItems.map(item => {
+        if (item.type === 'workflow') {
+          const w = WORKFLOWS.find(x => x.id === item.id);
+          if (!w) return '';
+          return `
+            <div class="rounded-2xl bg-[var(--card,#131b2e)] border border-emerald-500/30 p-5 space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400">Workflow</span>
+                <button onclick="toggleSave('${w.id}', 'workflow')" class="text-xs text-yellow-400">⭐ Remove</button>
+              </div>
+              <h4 class="text-sm font-bold text-white">${w.title}</h4>
+              <p class="text-xs text-slate-400">${w.summary}</p>
+              <button onclick="openWorkflowModal('${w.id}')" class="w-full py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-black">View Prompts</button>
+            </div>
+          `;
+        } else {
+          const t = TOOLS.find(x => x.id === item.id);
+          if (!t) return '';
+          return `
+            <div class="rounded-xl bg-[var(--card,#131b2e)] border border-blue-500/30 p-4 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400">AI Tool</span>
+                <button onclick="toggleSave('${t.id}', 'tool')" class="text-xs text-yellow-400">⭐ Remove</button>
+              </div>
+              <h4 class="text-xs font-bold text-white">${t.name}</h4>
+              <p class="text-xs text-slate-300 line-clamp-2">${t.description}</p>
+              <a href="${t.url}" target="_blank" class="block text-center py-1.5 rounded-lg text-xs font-semibold bg-white/10 text-white hover:bg-white/20">Open Tool ↗</a>
+            </div>
+          `;
+        }
+      }).join('');
+      grid.innerHTML = savedHtml;
+    }
+
+    // --- MODAL & PROMPTS VIEWER ---
+    function openWorkflowModal(id) {
+      const w = WORKFLOWS.find(x => x.id === id);
+      if (!w) return;
+
+      document.getElementById('modal-title').innerText = w.title;
+      document.getElementById('modal-category').innerText = w.category;
+      document.getElementById('modal-date').innerText = w.date;
+      document.getElementById('modal-summary').innerText = w.summary;
+
+      const body = document.getElementById('modal-body');
+      let html = '';
+
+      w.items.forEach(item => {
+        if (item.type === 'steps') {
+          html += '<div class="space-y-4">';
+          item.steps.forEach((s, idx) => {
+            const parsedText = parseStepTextWithPrompts(s.text);
+            html += `
+              <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-2.5">
+                <h4 class="text-sm font-bold text-emerald-400">${s.title}</h4>
+                <div class="text-xs text-slate-300 leading-relaxed">${parsedText}</div>
+              </div>
+            `;
+          });
+          html += '</div>';
+        } else if (item.type === 'tool') {
+          html += `
+            <div class="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-emerald-400 font-semibold">Recommended Tool:</span>
+                <span class="text-xs font-bold text-white">${item.label}</span>
+              </div>
+              ${item.url ? `<a href="${item.url}" target="_blank" class="text-xs text-emerald-400 font-semibold underline">Launch ↗</a>` : ''}
+            </div>
+          `;
+        }
+      });
+
+      body.innerHTML = html;
+      document.getElementById('workflow-modal').classList.remove('hidden');
+    }
+
+    function parseStepTextWithPrompts(text) {
+      // Look for ``` Prompt: ... or ``` Command: ...
+      const regex = /```\s*(Prompt|Command)[^:\n]*:?\s*([^\n]*)\n([\s\S]*?)```/g;
+      let result = text;
+      result = result.replace(regex, (match, type, title, code) => {
+        const cleanCode = code.trim();
+        const encoded = encodeURIComponent(cleanCode);
+        return `
+          <div class="my-3 rounded-xl bg-black/60 border border-emerald-500/30 overflow-hidden">
+            <div class="px-3.5 py-1.5 bg-emerald-950/40 border-b border-emerald-500/20 flex items-center justify-between text-[11px]">
+              <span class="font-mono text-emerald-400 font-semibold">${type}: ${title || 'Ready-to-use'}</span>
+              <button onclick="copyToClipboard(decodeURIComponent('${encoded}'))" class="px-2.5 py-0.5 rounded font-semibold bg-emerald-500 text-black hover:bg-emerald-400 transition-colors">
+                📋 Copy
+              </button>
+            </div>
+            <pre class="p-3 text-[11px] font-mono text-slate-200 overflow-x-auto whitespace-pre-wrap leading-relaxed">${cleanCode}</pre>
+          </div>
+        `;
+      });
+      return result.replace(/\n/g, '<br/>');
+    }
+
+    function closeModal() {
+      document.getElementById('workflow-modal').classList.add('hidden');
+    }
+
+    // --- ONBOARDING & ACCESS ---
+    function openOnboarding() {
+      document.getElementById('onboarding-modal').classList.remove('hidden');
+    }
+
+    function closeOnboarding() {
+      document.getElementById('onboarding-modal').classList.add('hidden');
+    }
+
+    function handleOnboardingSubmit(e) {
+      e.preventDefault();
+      const member = {
+        name: document.getElementById('ob-name').value,
+        email: document.getElementById('ob-email').value,
+        country: document.getElementById('ob-country').value,
+        coding: document.getElementById('ob-coding').value === 'yes',
+        role: document.getElementById('ob-role').value,
+        joinedAt: new Date().toISOString()
+      };
+      localStorage.setItem('maitis.member.v1', JSON.stringify(member));
+      isMember = true;
+      closeOnboarding();
+      updateMemberUI();
+      showToast(`Welcome aboard, ${member.name}! Library unlocked.`);
+    }
+
+    function updateMemberUI() {
+      if (isMember) {
+        document.getElementById('btn-unlock').classList.add('hidden');
+        const badge = document.getElementById('member-badge');
+        badge.classList.remove('hidden');
+        try {
+          const user = JSON.parse(localStorage.getItem('maitis.member.v1') || '{}');
+          if (user.name) document.getElementById('member-name').innerText = user.name;
+        } catch(e) {}
+      }
+    }
+
+    // --- UTILITIES & TOAST ---
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Prompt copied to clipboard!');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      toast.classList.remove('opacity-0', 'translate-y-12');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-12');
+      }, 2500);
+    }
+
+    // --- ADMIN DOC-TO-TOPIC CONVERTER ---
+    function loadSampleDoc() {
+      document.getElementById('admin-raw-text').value = 
+`# Prerequisites
+- Active Make.com account
+- DeepSeek API Key with balance
+
+# Step 1: Ingest Lead Webhook
+Configure your webhook listener in Make to capture incoming landing page signups.
+
+\`\`\` Prompt: Lead Scoring Engine
+You are a senior B2B qualifying analyst. Given this lead profile:
+Company: {{1.company}}
+Role: {{1.role}}
+Team Size: {{1.size}}
+
+Score from 1 to 10 and output JSON with reasons.
+\`\`\`
+
+# Step 2: Personalized Outreach Draft
+Send qualified leads to the email drafting module.
+
+\`\`\` Prompt: Cold Email Generator
+Draft a 3-sentence non-pushy email offering a custom 2-minute video audit based on their industry.
+\`\`\``;
+      convertDocToTopic();
+    }
+
+    function convertDocToTopic() {
+      const title = document.getElementById('admin-title').value;
+      const category = document.getElementById('admin-category').value;
+      const summary = document.getElementById('admin-summary').value;
+      const raw = document.getElementById('admin-raw-text').value;
+
+      const container = document.getElementById('admin-preview-container');
+      const lines = raw.split('\n');
+      let steps = [];
+      let currentStep = null;
+
+      lines.forEach(line => {
+        if (line.startsWith('# ')) {
+          if (currentStep) steps.push(currentStep);
+          currentStep = { title: line.replace('# ', '').trim(), text: '' };
+        } else {
+          if (!currentStep) currentStep = { title: 'Overview & Setup', text: '' };
+          currentStep.text += line + '\n';
+        }
+      });
+      if (currentStep) steps.push(currentStep);
+
+      let html = `
+        <div class="p-4 rounded-xl bg-slate-900 border border-emerald-500/30 space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400">${category}</span>
+            <span class="text-xs text-white font-bold">${title}</span>
+          </div>
+          <p class="text-xs text-slate-300">${summary}</p>
+        </div>
+      `;
+
+      steps.forEach((s, idx) => {
+        html += `
+          <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/5 space-y-2">
+            <h5 class="text-xs font-bold text-emerald-400">Step ${idx+1}: ${s.title}</h5>
+            <div class="text-xs text-slate-300">${parseStepTextWithPrompts(s.text)}</div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      window.latestConvertedTopic = {
+        id: 'user-' + Date.now().toString(36),
+        date: new Date().toISOString().split('T')[0],
+        title,
+        category,
+        summary,
+        items: [{ type: 'steps', steps }]
+      };
+    }
+
+    function publishTopicFromAdmin() {
+      if (!window.latestConvertedTopic) {
+        showToast('Please convert a document first!');
+        return;
+      }
+      WORKFLOWS.unshift(window.latestConvertedTopic);
+      renderWorkflows();
+      initWorkflowCategories();
+      showToast('🎉 Topic successfully published to Live Library!');
+      switchTab('library');
+    }
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      initWorkflowCategories();
+      initToolCategories();
+      renderWorkflows();
+      renderTools();
+      updateSavedBadge();
+      updateMemberUI();
+    });
+  </script>
+</body>
+</html>

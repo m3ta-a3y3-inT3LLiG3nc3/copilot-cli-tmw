@@ -1,0 +1,1339 @@
+[
+  {
+    "id": "001",
+    "date": "2026-10-23",
+    "title": "Apply to 100 jobs in one night with ChatGPT",
+    "category": "Career and Jobs",
+    "summary": "ChatGPT's agent mode finds jobs on LinkedIn and Indeed, tailors your resume for each role, and applies for you while you watch the browser work.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid ChatGPT plan (Plus or higher). Agent mode isn't on the free plan.\n- A LinkedIn account and an Indeed account, both logged in.\n- Your current resume as a file (PDF or Word).\n- 2 to 4 hours, since you stay nearby to clear CAPTCHAs."
+          },
+          {
+            "title": "Load your resume and map roles",
+            "text": "This maps your resume to the job titles and keywords worth targeting.\n\n1. Open a **new chat** in ChatGPT.\n2. Upload your resume as an attachment.\n3. Paste the prompt below and press Enter.\n\n``` Prompt 1: Recruiter map\nAct as a senior recruiter. Based on my resume, list the 20 job titles I'm most qualified for and the exact keywords ATS systems scan for in each one.\n```\n\n> If most jobs later come back with a match score of 0, your titles were too broad. Re-run this prompt and ask it to be more specific."
+          },
+          {
+            "title": "Build your master resume",
+            "text": "Stay in the same chat. Paste this:\n\n``` Prompt 2: Master resume\nTurn my resume into a master version I can tweak for any role in seconds. Run it through the Google XYZ formula (Accomplished X, as measured by Y, by doing Z) and kill everything a hiring manager would reject in one glance.\n```\n\nThe XYZ formula forces every bullet into one shape: accomplished X, as measured by Y, by doing Z. So \"Managed social media\" becomes \"Grew Instagram from 12K to 180K followers in 9 months by shipping a daily short-form video pipeline.\" Recruiters skim in about seven seconds, and bullets like this survive the skim.\n\n\"Kill everything a hiring manager would reject\" strips out:\n\n- Vague verbs: responsible for, involved in, helped with, worked on.\n- Buzzwords: synergy, ninja, rockstar, thought leader.\n- Unquantified claims: \"increased sales significantly\" becomes \"increased sales 34% QoQ\".\n- Blocks of prose. Bullets only, one or two lines each.\n\nSave the result as your master resume. Every application in Step 4 is tweaked from this one file."
+          },
+          {
+            "title": "Turn on agent mode",
+            "text": "Still in the same chat.\n\n1. Click the **+** button under the message box.\n2. Turn on **Agent Mode**. Some accounts call it **ChatGPT agent**.\n3. If it asks, allow the agent to open a browser for you.\n4. Log into LinkedIn and Indeed in your normal browser first.\n\n> If you connect the Indeed app inside ChatGPT (Apps sidebar, then Indeed, then **Connect**), the agent can pull listings without leaving the chat. It dodges a lot of the CAPTCHA trouble."
+          },
+          {
+            "title": "Search and apply to jobs",
+            "text": "Paste this:\n\n``` Prompt 3: Search and score\nGo to LinkedIn and Indeed. Find every job matching my target titles from Step 1, posted in the last 7 days. Build me a spreadsheet with: job link, company, location, match score (0-100), and a custom-tailored resume version for each one. Prioritize \"Easy Apply\" (LinkedIn) and \"Apply now\" (Indeed) listings - flag anything that redirects to Workday, Greenhouse, or Lever as a separate manual list.\n```\n\nThe agent opens a browser window you can watch. It runs the searches, filters by date, scores each job against your resume, and builds the sheet. This takes 10 to 30 minutes.\n\n**Easy Apply** is where the automation actually works: one click, resume pre-filled. Postings that redirect to Workday, Greenhouse or Lever need account creation and custom answers, so batch those for a manual session later.\n\nOnce the sheet is ready, paste this:\n\n``` Prompt 4: Auto-apply\nGo through the top 100 matches from the spreadsheet and apply to each one. For every application: use the tailored resume version, customize any short-answer fields based on the job description, and log the submission status in the sheet. If a listing asks for a cover letter, write one under 250 words that sounds like a real person - no \"I am writing to express my interest\" openers.\n```\n\nThe agent starts applying, clicking into each posting in the browser. A realistic run is 50 to 150 applications over 2 to 4 hours before it hits a rate limit or a wall of custom questions and stops.\n\n>! The agent applies to real jobs with your real accounts. Watch the browser window, and clear CAPTCHAs and custom questions when it pauses.\n\n> Tell the agent to skip any job with more than three short-answer questions and log it to a manual list, so a few long forms don't stall the whole run.\n\n> Some companies block automated applications and reject them silently. Apply to those by hand."
+          },
+          {
+            "title": "Make the interviews more likely",
+            "text": "Two things decide whether you wake up to interviews or silence.\n\n> Tailoring beats volume. The same resume sent 100 times gets one or two interviews. The per-role resume from Step 2 sent 100 times gets eight to fifteen. The tailoring does the work, not the automation.\n\n> Time the run so applications land early in the recruiter's morning in the target market, not at 3 AM. Applications read at the top of the day get seen; the rest get buried."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "ChatGPT",
+        "url": "https://chatgpt.com"
+      },
+      {
+        "type": "tool",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com"
+      },
+      {
+        "type": "tool",
+        "label": "Indeed",
+        "url": "https://www.indeed.com"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/001.webp"
+  },
+  {
+    "id": "002",
+    "date": "2026-10-23",
+    "title": "Test your launch on an AI crowd with MiroFish",
+    "category": "Marketing",
+    "summary": "MiroFish builds a crowd of AI people, shows them your launch, and reports how the market might react, so you can fix the price or message before you go live.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A Mac or Windows computer.\n- Node.js 18 or higher.\n- Python 3.11 or 3.12.\n- uv, the Python package manager.\n- An LLM API key. The repo recommends Alibaba's Qwen-plus through DashScope, but any OpenAI-compatible API works.\n- A Zep Cloud key for the agents' memory. The free monthly tier is enough to start."
+          },
+          {
+            "title": "Get the code",
+            "text": "``` Command: Clone the repo\ngit clone https://github.com/666ghj/MiroFish.git\ncd MiroFish\n```"
+          },
+          {
+            "title": "Get your two API keys",
+            "text": "- LLM key: sign up at a provider and copy an API key, its base URL, and the model name. The repo's default is Alibaba's Bailian / DashScope platform (qwen-plus), but any OpenAI-compatible endpoint works, such as OpenAI or Gemini through a compatible proxy.\n- Zep Cloud key: create a free account at getzep.com and grab the API key. The free monthly quota covers light use."
+          },
+          {
+            "title": "Set up your environment file",
+            "text": "Copy the example file.\n\n``` Command: Copy the env file\ncp .env.example .env\n```\n\nOpen .env and fill in your keys.\n\n``` Command: Your .env values\nLLM_API_KEY=your_api_key\nLLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1 LLM_MODEL_NAME=qwen-plusZEP_API_KEY=your_zep_api_key\n```\n\n> Swap LLM_BASE_URL and LLM_MODEL_NAME for whatever provider you are using."
+          },
+          {
+            "title": "Install everything",
+            "text": "One command installs the lot (root, frontend, and backend).\n\n``` Command: Install everything\nnpm run setup:all\n```\n\nPrefer to do it in stages?\n\n``` Command: Install in stages\nnpm run setup\nnpm run setup:backend\n```"
+          },
+          {
+            "title": "Start MiroFish",
+            "text": "``` Command: Start MiroFish\nnpm run dev\n```\n\nThen open these in your browser:\n\n- Frontend (the dashboard): http://localhost:3000\n- Backend API: http://localhost:5001\n\n> Want them separately? Run npm run backend and npm run frontend. Docker alternative: after Step 3, run docker compose up -d for the same ports.\n\n> Want it fully local and free, with no cloud API bill? There is a community fork, github.com/nikmcfly/MiroFish-Offline, that swaps in a local stack (Neo4j and Ollama). The trade-off: you need a capable machine, and local models are weaker than frontier ones."
+          },
+          {
+            "title": "Run your first simulation",
+            "text": "This is the part the video is really selling. In the dashboard:\n\n1. Upload your seed material: whatever you are about to put out, such as your launch post, landing-page copy, the new price, the ad creative, or a short product description. It also accepts research docs or background text.\n2. Describe what you want to know, in plain language. For example: \"I'm launching this $49/mo SaaS to indie founders. Test how they react to the price and the main headline. I'm worried it reads as too expensive and too generic.\"\n3. Keep the first run small: a modest number of agents and under about 40 rounds. This controls cost while you learn how it behaves.\n4. Run it. MiroFish builds a knowledge graph from your material, generates a crowd of AI personas with different backgrounds, lets them react and talk to each other, and tracks how opinions shift over time. Tip: Use a cheaper, faster model for early experiments and save the expensive model for final runs. Watch your LLM provider's usage dashboard for the first few runs so there are no bill surprises."
+          },
+          {
+            "title": "Read the report and dig in",
+            "text": "When the run finishes you get two things:\n\n- A prediction report: how the market responded, with sentiment, the main objections, what landed, and what fell flat.\n- A living world you can explore: chat directly with any AI agent (for example, \"why did you bounce off the price?\") and ask the Report Agent follow-up questions.\n\nUse the objections and framing problems it surfaces to fix your real launch, then re-run to compare if you want."
+          },
+          {
+            "title": "Know the limits before you trust it",
+            "text": "MiroFish gives you directional signal, not a verdict. Keep these in mind:\n\n- Simulated is not real. Treat the results as hypotheses to test, not facts.\n- Garbage in, garbage out. The personas are only as good as your seed material and your prompt.\n- Costs scale with realism. A run with thousands of customers is possible but expensive. Most of the value comes from smaller, well-framed runs.\n\n>! MiroFish is AGPL-3.0 licensed. That is fine for personal or internal use, but read the license before you build a commercial product on top of it."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "MiroFish on GitHub",
+        "url": "https://github.com/666ghj/MiroFish"
+      },
+      {
+        "type": "tool",
+        "label": "MiroFish site",
+        "url": "https://mirofish.ai"
+      },
+      {
+        "type": "tool",
+        "label": "Zep Cloud",
+        "url": "https://getzep.com"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/002.webp"
+  },
+  {
+    "id": "003",
+    "date": "2026-10-23",
+    "title": "Set up a free AI sales agent with Harvey",
+    "category": "Sales",
+    "summary": "Harvey is a free, open-source AI agent that finds leads, writes personal cold emails, sends them and chases replies, all on the Claude plan you already pay for.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A Mac or Windows computer.\n- A paid Claude plan (Pro or Max). Max is best if you want Harvey running all day.\n- A paid Instantly plan to send the emails. Their Growth plan or higher includes the API access Harvey needs.\n- About 10 minutes."
+          },
+          {
+            "title": "Install Claude Code",
+            "text": "This is the only thing you set up by hand. Everything after this, Claude does for you.\n\nOn Mac:\n\n1. Open the Terminal app. Press Cmd + Space, type Terminal, and press Enter.\n2. Paste the line below and press Enter.\n\n``` Command (Mac): Install Claude Code\ncurl -fsSL https://claude.ai/install.sh | bash\n```\n\nOn Windows:\n\n1. Open PowerShell. Press Start, type PowerShell, and press Enter.\n2. Paste the line below and press Enter.\n\n``` Command (Windows): Install Claude Code\nirm https://claude.ai/install.ps1 | iex\n```\n\nThen on both:\n\n1. Close the terminal window and open a new one.\n2. Type the command below and press Enter.\n3. A browser window opens. Sign in with the same account as your paid Claude plan.\n\n``` Command: Start Claude Code\nclaude\n```\n\n> If Claude later asks to install Git or Python, say yes. It needs them to set Harvey up, and it can install them for you."
+          },
+          {
+            "title": "Let Claude install Harvey",
+            "text": "Now you hand the rest to Claude. In the same claude session, paste this one message and press Enter.\n\n``` Prompt: Set up Harvey\nSet up Harvey for me from scratch. Clone\nhttps://github.com/ethanplusai/harvey.git into a new folder, install everything it needs (including anything missing on my computer like Python or Git), then run Harvey's setup wizard end to end. Train Harvey on my product from my website, connect my email tool, and get it running. Ask me for anything you need along the way, and explain each step in simple words.\n```\n\nThen just follow along. Claude installs the parts, asks you a few questions, and sets everything up. That is the whole point of running this through Claude.\n\n> Harvey is not a Claude plugin, so there is no /skills step here. It is its own app that uses Claude as its brain. You confirm it is set up by opening the dashboard in Step 4."
+          },
+          {
+            "title": "Tell Harvey what you sell",
+            "text": "During setup, Harvey asks a few simple things. This is the part that makes it work.\n\n- Your product: paste your website link. Harvey reads your site and learns your product and your ideal customer on its own. No website? Just type the answers to its questions.\n- Your ideal customer: the kind of business you want (industry, size, location).\n- Your email tool: your Instantly API key, so Harvey can send. Find it in Instantly under Settings -> Integrations -> API Keys.\n\n>! Skip the LinkedIn option. Using it can get your LinkedIn account restricted. Harvey finds leads from web search and company websites instead.\n\n> Say you build websites. You tell Harvey that, and it finds local businesses that match, researches each one, and writes a real, tailored cold email per business, not a template.\n\n> If Instantly gives a 401 error, your API key is wrong or your plan does not include API access. Make a new key in Instantly under Settings -> Integrations -> API Keys."
+          },
+          {
+            "title": "Start it and watch your pipeline",
+            "text": "Once setup is done, just tell Claude start Harvey. Or run the command below yourself.\n\n``` Command: Start Harvey\nharvey run\n```\n\nHarvey now works on its own in the background. It will:\n\n- Find new leads that match your ideal customer.\n- Research each one.\n- Write a personalized cold email for each.\n- Send them through Instantly.\n- Read the replies and respond to move toward a meeting.\n- Keep repeating, on a schedule you set.\n\nTo see everything in one place, open this in your browser.\n\n``` Open in browser: Live dashboard\nhttp://localhost:5555\n```\n\nThat is your live dashboard: every lead, every campaign, every reply. To stop Harvey at any time, go back to the terminal and press Ctrl + C. Nothing sends while it is stopped.\n\n> Harvey runs while your computer is on and the terminal is open. For true around-the-clock running you can later move it to a server, but that is advanced and you do not need it to start.\n\n> If it says command not found: harvey, tell Claude \"the harvey command isn't found, fix it\" and it will sort out the setup for you.\n\n> If Harvey isn't finding leads, free web search gets rate-limited. Serper, the search service, gives 2,500 free searches to start; after that its cheapest paid plan is $50 for 50,000 searches. Ask Claude to add a Serper API key for reliable results."
+          },
+          {
+            "title": "Protect your email before sending",
+            "text": "Cold email done wrong will get your email address blocked. Two minutes of care here saves weeks of pain.\n\n- Use a separate sending domain, not your main company email. Example: getyourbrand.com instead of yourbrand.com.\n- Turn on Instantly's warmup and leave it on for 2 to 4 weeks before sending real volume.\n- Start small: 10 to 20 emails a day, then raise it slowly.\n- Always honor opt-outs. If someone says stop or unsubscribe, Harvey already treats that as final. Keep it that way.\n\n>! This is not legal advice. If you send at large scale or into regulated industries, talk to a lawyer first.\n\n> Emails going to spam is almost always a domain problem, not your writing. Check that your sending domain is set up and warmed up, and cut your daily volume in half."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "Harvey on GitHub",
+        "url": "https://github.com/ethanplusai/harvey"
+      },
+      {
+        "type": "tool",
+        "label": "Instantly",
+        "url": "https://instantly.ai"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/003.webp"
+  },
+  {
+    "id": "004",
+    "date": "2026-10-23",
+    "title": "Build a hospital booking site that calls patients",
+    "category": "Vibe Coding",
+    "summary": "Build a hospital appointment website where every booking triggers an AI voice agent to call and confirm, then saves the recording and details to one dashboard.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A Mac or Windows computer with Claude Code installed.\n- An OmniDimension account for the AI voice agent, plus a phone number (buy one inside OmniDimension).\n- A Vercel account to put the site live.\n- A Supabase account to store bookings and call data.\n- A Resend account (or any email tool) to email you the recording and details.\n- About 30 to 45 minutes for a first version.\n\n>! Steps 1, 2 and 4 are mostly simple. The real work is Step 3, where the booking has to trigger the call and the call has to report back. That is what makes it a real system and not just a nice-looking website. Slow down there."
+          },
+          {
+            "title": "Build the website",
+            "text": "Open Claude Code in an empty folder. Paste this:\n\n``` Prompt: Build the site\nBuild a hospital appointment booking website in Next.js and Tailwind.\n\nPages: Home, Doctors, Book Appointment, Contact.\nThe booking form collects: patient name, phone number, doctor, date, time, and reason for visit. Design: clean, calm, medical. White with soft blue. Modern and mobile-first. Keep everything in one project I can deploy to Vercel.\n```\n\nLet it build, open the preview, and keep asking for changes until it looks right:\n\n``` Prompt: Refine the look\nMake the hero simpler. Bigger heading. Move the booking button to the top. Round the form corners.\n```\n\nThen give it your real content so it stops looking like a demo:\n\n``` Prompt: Add your real content\nReplace the placeholder content with my real hospital.\nDoctors: [name and specialty for each]\nServices: [list]\nTimings: [list]\nContact: [phone, email, address]\nUse the logo and photos I am adding to the project folder.\n```\n\n> Drop your logo and photos into the project folder first, then tell Claude the file names. It will place them for you."
+          },
+          {
+            "title": "Build the AI voice agent",
+            "text": "Go to OmniDimension and create a new Voice AI assistant. Pick a warm, natural voice, then give it these instructions (paste and edit the name):\n\n``` Prompt: Voice agent instructions\nYou are the front desk receptionist for [Hospital Name].\nYou are calling a patient to confirm the appointment they just booked. Be warm, clear and quick.\n\nDo this:\n1. Greet them by name.\n2. Confirm the doctor, the date and the time.\n3. Ask if that time still works for them.\n4. If yes, confirm it and thank them.\n5. If no, tell them you will note a reschedule request and someone will call back.\n\nKeep the call under a minute. Never give medical advice.\n```\n\nThen:\n\n- Buy a phone number inside OmniDimension (or import your Twilio number) and attach it to this agent. This is the number that will call patients.\n- Copy your API key and your Agent ID. You need both in Step 3.\n\n> Place a test call to your own number before wiring anything. Fix the voice and the script here, not later."
+          },
+          {
+            "title": "Connect everything and go live",
+            "text": "This is where the site starts working like a real system. Go slowly here.\n\nFirst, wire the booking. Back in Claude Code, paste this and fill in your IDs:\n\n``` Prompt: Wire the booking\nWhen someone submits the booking form, do three things on the server:\n1. Save the booking to Supabase.\n2. Call the OmniDimension API to start a confirmation call to the patient's phone number, using Agent ID [your agent id].\n3. Email me the booking details.\nRead these from environment variables, do not hardcode them:\nOMNIDIM_API_KEY, OMNIDIM_AGENT_ID, SUPABASE_URL, SUPABASE_ANON_KEY, RESEND_API_KEY, MY_EMAIL. Show me the .env file I need to fill in.\n```\n\nNext, deploy. Add the Vercel plugin in Claude Code, then ask it to deploy:\n\n``` Prompt: Deploy to Vercel\nAdd Vercel. Deploy this project to my Vercel account and give me the live link.\n```\n\nThen set your environment variables in Vercel (Project -> Settings -> Environment Variables) using your .env values, and redeploy.\n\nLast, close the loop from the call back to you. In OmniDimension, add a webhook that fires after each call and point it at your live site (for example https://yoursite.com/api/call-result). Then in Claude Code:\n\n``` Prompt: Receive the call result\nAdd an API route at /api/call-result that receives OmniDimension's webhook after a call. Save the recording link, transcript and outcome to Supabase against the matching booking. Email me the recording link and the patient details.\n```\n\nNow the full loop runs on its own: patient books, the AI calls in about a minute, and the result and recording come back to Supabase and your inbox."
+          },
+          {
+            "title": "Connect Supabase and get your dashboard",
+            "text": "Create a free project on Supabase. In the SQL editor, create two tables:\n\n``` SQL: Create the tables\ncreate table bookings (\nid uuid primary key default gen_random_uuid(),\nname text,\nphone text,\ndoctor text,\nappointment_date date,\nappointment_time text,\nreason text,\nstatus text default 'pending',\ncreated_at timestamptz default now()\n);\n\ncreate table call_logs (\nid uuid primary key default gen_random_uuid(),\nbooking_id uuid references bookings(id),\nrecording_url text,\ntranscript text,\noutcome text,\ncreated_at timestamptz default now()\n);\n```\n\nCopy your Project URL and anon key from Settings -> API and put them in your env (same names as Step 3). Then add a simple admin view. In Claude Code:\n\n``` Prompt: Build the admin page\nAdd a password-protected admin page at /admin.\nShow a table of all bookings with their status, plus the linked call recording and outcome for each. Let me update a booking's status from this page.\n```\n\nNow everything lives in one place: bookings, call recordings and status, all editable by you."
+          },
+          {
+            "title": "Test before you go live",
+            "text": "Book a fake appointment with your own number and check the whole loop: the call, the email, and the dashboard all work.\n\n>! Calls cost money. You pay for the phone number and for each minute of calling. Start small and watch your usage.\n\n>! Only call people who gave their number to book. Confirming their own appointment is fine. Do not use this to cold-call strangers."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "OmniDimension",
+        "url": "https://omnidim.io"
+      },
+      {
+        "type": "tool",
+        "label": "Vercel",
+        "url": "https://vercel.com"
+      },
+      {
+        "type": "tool",
+        "label": "Supabase",
+        "url": "https://supabase.com"
+      },
+      {
+        "type": "tool",
+        "label": "Resend",
+        "url": "https://resend.com"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/004.webp"
+  },
+  {
+    "id": "005",
+    "date": "2026-10-23",
+    "title": "Turn Claude into your Instagram manager with Ootto",
+    "category": "Content Creation",
+    "summary": "Connect Claude to Instagram through Ootto, paste one prompt, and Claude studies your profile and builds a full week of Reels with hooks, scripts, captions and direction.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro or higher). Custom connectors aren't on the free plan.\n- Your Instagram login, to connect your account through Ootto.\n- 5 minutes.\n\n>! Claude writes everything for your Reels and drafts it into Ootto, but the animated graphics, the voiceover audio and the music come out as direction (what to make and the vibe), not finished files. You still render those in your own tools. Whether Ootto posts for you automatically depends on your Ootto account's publishing setting."
+          },
+          {
+            "title": "Connect Ootto to Claude",
+            "text": "1. In Claude, go to Customize -> Connectors.\n2. Click Add Custom Connector.\n3. Name it Ootto, paste the URL below into the URL field, and leave advanced settings empty.\n\n``` Connector URL\nhttps://mcp.ootto.ai/mcp\n```\n\n4. Click **Add**, then **Connect**, then **Allow** when Claude asks for permission.\n5. A login screen opens. Log into Ootto, pick **Instagram**, and click **Allow access**.\n\nYou'll see Ootto listed under your connectors with an active status.\n\n> No **Add Custom Connector** button? You're likely on the free plan. Custom connectors need Pro or higher.\n\n> If Ootto won't connect, re-check the URL is exactly https://mcp.ootto.ai/mcp with advanced settings empty. If the Instagram link fails, log out of Ootto, log back in, and link Instagram again from scratch."
+          },
+          {
+            "title": "Paste the master prompt",
+            "text": "Open a normal Claude chat and paste this whole block.\n\n``` Prompt: Instagram growth manager\nYou are my Instagram growth manager. You have access to my Instagram account through the Ootto connector. Work through this in order, and ask me to approve before anything gets published.\n\nSTEP 1 - Study my account\nUse the Ootto tools to pull my profile and my last 30 to 60 posts. Look at:\n- Which Reels and posts got the most views, likes, saves and shares\n- The hooks and opening lines that performed best\n- My average Reel length, my posting times and days\n- The hashtags and topics that show up in my best posts\nThen tell me, in plain language, what my niche is, who my audience is, and my top 3 content pillars (the themes that actually perform).\n\nSTEP 2 - Find what is working right now\nSearch the web for 8 to 10 trending topics, formats and angles in my niche this week. Keep only the ones that fit my pillars and my audience.\n\nSTEP 3 - Build a 7-day Reel plan\nGive me one Reel per day for the next 7 days. For each day, write:\n- Day and best time to post (based on my own data)\n- Title hook: the short text that sits on the first frame\n- Spoken hook: the first line I say\n- Full script: word for word, in my voice, matched to how my best Reels sound\n- Caption: ready to paste\n- Hashtags: 5 to 10, based on what works for me\n- Visual direction: what is on screen, scene by scene\n- Voiceover direction: tone and pace\n- Music direction: the kind of track and the vibe\nKeep the writing simple and human. Match my tone, not a generic influencer tone.\n\nSTEP 4 - Draft them into Ootto\nUsing the Ootto tools, save each Reel's caption and plan into my account as a draft or scheduled post. If Ootto can schedule them to post automatically, set them up but do not publish anything until I say go. If Ootto cannot schedule, just give me everything above so I can post it myself.\n\nStart with Step 1 now. After each step, pause and show me the result before moving on.\n```"
+          },
+          {
+            "title": "Approve each stage",
+            "text": "Claude works through it one step at a time and stops for you to check each stage:\n\n- After Step 1: a plain-English read on your niche, audience, and top 3 content pillars.\n- After Step 2: a shortlist of trending angles that fit your page.\n- After Step 3: 7 full Reels with hook, script, caption, hashtags, posting time, plus visual, voiceover and music direction.\n- After Step 4: everything drafted into Ootto, ready for you to approve.\n\nNothing posts until you say go. Read each Reel, tweak anything that doesn't sound like you, then approve.\n\n> If it skips straight to writing without studying your account, tell it: \"Do Step 1 first, pull my real posts through Ootto before writing anything.\"\n\n> If the output sounds generic, tell it: \"Rewrite in my voice, match the tone of my 3 best-performing Reels.\"\n\n> If Claude says it can't see your posts, make sure Ootto shows connected in your connector list, then start a fresh chat."
+          },
+          {
+            "title": "Run it again every week",
+            "text": "Once you like the output, run it again any time by pasting the same prompt. Claude re-studies your latest posts and builds a fresh week.\n\n> If your Ootto account has scheduling turned on, ask Claude to schedule the approved Reels across the week so they post on their own."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude",
+        "url": "https://claude.ai"
+      },
+      {
+        "type": "tool",
+        "label": "Ootto",
+        "url": "https://ootto.ai"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/005.webp"
+  },
+  {
+    "id": "006",
+    "date": "2026-10-23",
+    "title": "Let 7 AI advisors debate your business decision",
+    "category": "Business and Startups",
+    "summary": "Roast Room is a free Claude skill that seats 7 AI advisors, each built from a real founder's work, to argue your decision, score the options, and hand you a PDF verdict.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A laptop (Mac or Windows).\n- A paid Claude plan (Pro or higher). Claude Code and the advisor sub-agents run on your plan, no API key needed.\n- Node.js 20 or newer (free, link in Tools).\n- 5 minutes."
+          },
+          {
+            "title": "Install Claude Code",
+            "text": "On Mac, open Terminal and paste:\n\n``` Command (Mac): Install Claude Code\ncurl -fsSL https://claude.ai/install.sh | bash\n```\n\nOn Windows, open PowerShell and paste:\n\n``` Command (Windows): Install Claude Code\nirm https://claude.ai/install.ps1 | iex\n```\n\nOnce it finishes, type claude and press Enter. Log in with your Claude account when it asks.\n\n> If the claude command is not found, close and reopen the terminal, then try again."
+          },
+          {
+            "title": "Install Node.js",
+            "text": "Roast Room runs a small local app that shows the 7 advisors around a table. That needs Node. Go to nodejs.org (in Tools), download version 20 or newer, and install it with all the default settings.\n\nTo check it worked, open your terminal and type:\n\n``` Command: Check Node\nnode --version\n```\n\nIf you see a number like v20.something, you're good.\n\n> If the node command is not found, reinstall Node from nodejs.org and reopen your terminal."
+          },
+          {
+            "title": "Install the Roast Room skill",
+            "text": "Open Claude Code and paste this one message:\n\n``` Prompt: Install Roast Room\nClone github.com/nateherkai/roast-room and set it up for me.\n\nRun git clone, cd into the folder, confirm the\n.claude/skills/roast-room folder is in place, then run /skills so I can see all 7 advisor sub-agents loaded.\n```\n\nClaude handles the clone and setup itself.\n\n> If the advisors don't show in /skills, paste in Claude Code: \"Reload the skills directory and run /skills again.\""
+          },
+          {
+            "title": "Start the room",
+            "text": "Still in your terminal, inside the roast-room folder, run:\n\n``` Command: Start the room\nnpm start\n```\n\nThen open http://localhost:4730 in your browser. Leave this tab open. This is the live room where you'll watch the advisors debate.\n\n> If npm start throws an error, make sure you're inside the roast-room folder first (cd roast-room). If the room page won't load, make sure the npm start terminal is still running, then refresh the page."
+          },
+          {
+            "title": "Run your first roast",
+            "text": "Open Claude Code in the same folder (type claude), then paste your decision:\n\n``` Command: Run a roast\n/roast-room [your decision here]\n```\n\nA good prompt gives the council what it needs. Example:\n\n``` Prompt: Example decision\n/roast-room I run a D2C skincare brand doing $40k a month with 1 full-time hire. Should I raise prices by 30%, launch a cheaper line, or spend the next 90 days only on content and keep prices flat? I have $25k in the bank. Success is $70k a month by March. I'm leaning toward the cheaper line because volume feels safer.\n```\n\nInclude: the decision, 2 to 3 options, your numbers (revenue, cash, team), your limits (deadline, budget), what success looks like, and which way you're leaning. The Chair asks follow-up questions if anything is missing.\n\n>! A full 7-advisor council uses real plan credit (21 sub-agent runs). For smaller calls, use /roast-room --quick [decision] (4 advisors, 2 rounds), /roast-room --seats hormozi,buffett [decision] (only the advisors you pick), or /roast-room ask hormozi [question] (one answer from one seat)."
+          },
+          {
+            "title": "Watch the council and get your verdict",
+            "text": "Each of the 7 advisors argues from their own pillar:\n\n- Jeff Bezos: strategy and reversibility, is this the right bet?\n- Paul Graham: product-market fit, do people actually want it?\n- Alex Hormozi: offer, pricing, sales, will people pay?\n- Gary Vaynerchuk: attention and marketing, where do eyeballs come from?\n- Dan Martell: people, hiring, your calendar, who does this work?\n- Gino Wickman: operations, can the business run without you?\n- Warren Buffett: cash, risk, long-term capital, what does this do to the money?\n\nThey score every option, weighted by how much their pillar matters to your decision. The Chair caps the verdict if any seat flags ruin risk. When it finishes you get a short verdict in Claude Code, a full report saved in the sessions folder, and a one-click PDF download in the room.\n\n> To run it again on a new decision, open two terminals in the roast-room folder. In the first run npm start to keep the room live. In the second run claude, then /roast-room with your new decision. A full council takes 5 to 10 minutes."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "Node.js",
+        "url": "https://nodejs.org"
+      },
+      {
+        "type": "tool",
+        "label": "Roast Room on GitHub",
+        "url": "https://github.com/nateherkai/roast-room"
+      },
+      {
+        "type": "guide",
+        "label": "Claude Code docs",
+        "url": "https://docs.claude.com/claude-code"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/006.webp"
+  },
+  {
+    "id": "007",
+    "date": "2026-10-23",
+    "title": "Build a music streaming site with Claude Code",
+    "category": "Vibe Coding",
+    "summary": "Describe a Spotify-style music site to Claude Code and it builds the search, audio player and track art, then helps you fix bugs and get it online.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Claude Code installed and working.\n- A folder of songs you own or are allowed to use (mp3 or similar).\n- A few background images for the tracks.\n- A rough idea of the look you want (colours, vibe, layout).\n\n>! Use music and images you actually have rights to. If this goes public, other people's songs and copyrighted art can get the site taken down."
+          },
+          {
+            "title": "Describe the site in one prompt",
+            "text": "Give Claude one clear, detailed prompt and let it build the full site, structure, design, search and audio player included. The more detail you give, the less back-and-forth later.\n\nA strong prompt covers:\n\n- What the site is, such as \"a music streaming site like Spotify, but smaller\".\n- The main sections: home, search, and a now-playing bar.\n- The player behaviour: play, pause, skip, progress bar, duration.\n- The look: dark theme, colours, font feel.\n- Anything unique, such as songs grouped by place or mood.\n\nClaude builds the structure, design, interactions, search and audio player in one go.\n\n> Describe behaviour, not code. \"The player should keep playing while I browse other pages\" is better than trying to name a technical approach."
+          },
+          {
+            "title": "Add your songs and images",
+            "text": "Drop your songs and images into the project, then ask Claude to organise them. It handles the boring part for you:\n\n- Renames every file into a clean, consistent format.\n- Matches each track to its background image.\n- Pulls the real duration off each track so the player shows correct times.\n\n> You don't hand-label anything. Give it the raw files and one instruction: \"organise these and wire them into the player.\""
+          },
+          {
+            "title": "Show Claude the bug, don't explain it",
+            "text": "When something breaks, stop trying to describe it in words. Record your screen while using the broken site, then upload the recording to Claude.\n\nWhy this works better than typing:\n\n- Claude sees the actual behaviour: a broken layout, a missing image, a player that won't play.\n- No guessing on your side about what to call the problem.\n- It spots the cause and fixes it directly.\n\n> In the recording, do the exact thing that breaks, click the button, load the page, hit play, so the failure is on screen."
+          },
+          {
+            "title": "Finalise and publish",
+            "text": "Ask Claude to finalise the project. It will:\n\n- Optimise the assets (images and audio) so the site loads faster.\n- Clean up leftover and unused project files.\n- Prepare everything for hosting.\n\nThen ask Claude for a step-by-step guide to put the site online. It gives you the exact steps to publish: which files to upload, where, and in what order.\n\n> The real upgrade here isn't the website. It's treating Claude like a developer who can build, test, debug and ship, start to finish."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/007.webp"
+  },
+  {
+    "id": "008",
+    "date": "2026-10-23",
+    "title": "Set up JARVIS, your open-source voice assistant",
+    "category": "AI Agents",
+    "summary": "Install Claude Code, hand it an open-source assistant repo, add an ElevenLabs voice and your own tools, and get a voice assistant that reads your morning out loud.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A computer running macOS 13+, Windows 10 (1809+), or Linux (Ubuntu 20.04+ / Debian 10+).\n- 4 GB or more of RAM and an internet connection.\n- A paid Claude plan (Pro, Max, Team, or Enterprise). Claude Code is not on the free Claude.ai plan.\n- A GitHub account.\n- An ElevenLabs account. The free tier gives about 10,000 voice credits a month to start.\n- The GitHub link for the assistant project you want to install.\n\n>! Replace YOUR-REPO-URL everywhere below with the actual repo link from the video. The steps stay the same whichever open-source assistant project you use."
+          },
+          {
+            "title": "Install Claude Code",
+            "text": "Claude Code is the agent that installs and runs everything. Open your terminal and run the command for your system.\n\n``` Command (macOS / Linux / WSL): Install Claude Code\ncurl -fsSL https://claude.ai/install.sh | bash\n```\n\n``` Command (Windows PowerShell): Install Claude Code\nirm https://claude.ai/install.ps1 | iex\n```\n\n``` Command (any OS, needs Node.js 18+): Install Claude Code\nnpm install -g @anthropic-ai/claude-code\n```\n\nThen confirm it installed:\n\n``` Command: Check the install\nclaude --version\nclaude doctor\n```\n\nThe first time you launch it, it opens your browser to sign in with your Claude account.\n\n``` Command: Start Claude Code\nclaude\n```\n\n> If you get command not found: claude, close and reopen your terminal (the installer updates your PATH). Still stuck? Run claude doctor and it tells you exactly what's wrong."
+          },
+          {
+            "title": "Hand Claude the project",
+            "text": "Make a folder for the assistant, open Claude Code inside it, then give it the repo.\n\n``` Command: Open Claude Code in a new folder\nmkdir jarvis && cd jarvis\nclaude\n```\n\nNow paste this prompt into Claude Code (swap in your real link):\n\n``` Prompt: Install the project\nClone this repo into the current folder, read its README, install all dependencies, and get it running. Tell me anything you need from me (API keys, config, etc.) as you go:\nYOUR-REPO-URL\n```\n\nClaude pulls the files, sets up the dependencies, and starts the project on its own. When it needs something from you, like a key, it pauses and asks. Just answer in plain English.\n\n> No project picked yet? Search GitHub for open-source \"Claude voice assistant\" or \"voice MCP\" projects and drop that link in. The setup flow works the same way."
+          },
+          {
+            "title": "Add your ElevenLabs voice",
+            "text": "This is what makes it talk.\n\nGet your API key:\n\n1. Sign in at elevenlabs.io.\n2. Open your profile -> API Keys -> create a new key.\n3. Copy it somewhere safe.\n\nPick a voice:\n\n1. Go to the Voices or Voice Library section.\n2. Preview a few and choose one you like.\n3. Copy its Voice ID. You'll paste this into the config.\n\nPlug it in. The easiest path is to let the official ElevenLabs MCP server handle speech. First install uv (a small helper), then add the server to Claude Code.\n\n``` Command: Install uv and add ElevenLabs\ncurl -LsSf https://astral.sh/uv/install.sh | sh\nclaude mcp add elevenlabs --env ELEVENLABS_API_KEY=<your-key-here>\n-- uvx elevenlabs-mcp\n```\n\nOr, if your project uses a .mcp.json file, add this block and paste your key inside:\n\n``` Config: .mcp.json\n{\n\"mcpServers\": {\n\"elevenlabs\": {\n\"command\": \"uvx\",\n\"args\": [\"elevenlabs-mcp\"],\n\"env\": {\n\"ELEVENLABS_API_KEY\": \"<your-key-here>\",\n\"ELEVENLABS_VOICE_ID\": \"<your-voice-id>\"\n}\n}\n}\n}\n```\n\nThen just tell Claude:\n\n``` Prompt: Test the voice\nUse ElevenLabs for the voice output, with the voice ID I set. Read this line out loud to test it: \"Good morning, your assistant is online.\"\n```\n\nRestart Claude Code if it doesn't pick up the new server right away.\n\n>! ElevenLabs voice generation uses credits. The free tier is plenty for testing. Heavy daily use may need a paid ElevenLabs plan."
+          },
+          {
+            "title": "Connect your tools",
+            "text": "Now link the assistant to the things you actually use: calendar, inbox, dashboards, notes, whatever. Each tool connects as an MCP server, exactly like ElevenLabs did. The pattern is always the same.\n\n``` Command: Add a tool\nclaude mcp add <tool-name> --env KEY=value --\n<command-to-run-that-server>\n```\n\nTo see what's connected at any time:\n\n``` Command: List connected tools\nclaude mcp list\n```\n\nThen let Claude wire the tool into your assistant's routine:\n\n``` Prompt: Wire the tools in\nI've connected my calendar and email. Update the assistant so my morning brief pulls from both: show me what's on my calendar today and which emails still need a reply.\n```\n\n> Most popular tools (Google Calendar, Gmail, Notion, Slack) have a ready-made MCP server. Search \"[tool name] MCP server\" for the exact install command, then add it with the same claude mcp add pattern. Start with one or two tools. You can always add more later."
+          },
+          {
+            "title": "Run your first morning brief",
+            "text": "Ask for it:\n\n``` Prompt: Morning brief\nGive me my morning brief out loud: what's pending, what's important, and which emails I still haven't replied to.\n```\n\nInstead of scrolling through 40 emails, you get a short spoken summary of what actually needs you. Once you like the format, ask Claude to save it as a reusable command or a scheduled routine so you can trigger it every morning with one word.\n\n> If you're getting billed API rates while on Pro or Max, an ANTHROPIC_API_KEY in your environment is overriding your subscription. Run unset ANTHROPIC_API_KEY to use your plan instead.\n\n> If an MCP server isn't showing up, restart Claude Code and run claude mcp list to confirm it's registered. If the install script returns a 403, it's usually a region, proxy or VPN issue. Try a different network, or use the npm install method."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "ElevenLabs",
+        "url": "https://elevenlabs.io"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/008.webp"
+  },
+  {
+    "id": "009",
+    "date": "2026-10-23",
+    "title": "Run your YouTube channel with 11 free Claude skills",
+    "category": "Content Creation",
+    "summary": "11 free, open-source Claude skills that plan, script, package and audit your YouTube channel. One install, one paste-in message, no API keys, and nothing posts until you do.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro, Max, Team or Enterprise). The free plan does not include Claude Code.\n- A Mac or Windows computer.\n- About 10 minutes.\n\n> These skills never touch your YouTube account and never post anything. Claude writes, plans and checks. You upload."
+          },
+          {
+            "title": "Install Claude Code",
+            "text": "This is the only manual step. Do it once.\n\n1. Open your terminal. On Mac, press Cmd + Space, type Terminal, and press Enter. On Windows, click Start, type PowerShell, and press Enter.\n2. Paste the line for your computer and press Enter.\n\n``` Command (Mac): Install Claude Code\ncurl -fsSL https://claude.ai/install.sh | bash\n```\n\n``` Command (Windows PowerShell): Install Claude Code\nirm https://claude.ai/install.ps1 | iex\n```\n\n3. Close the terminal and open a new one. Type claude and press Enter. A browser opens, so log in with your Claude account. Tip: The installer shows no progress bar. Just wait until it finishes. If claude says command not found, close the terminal and open a new one, then try again."
+          },
+          {
+            "title": "Paste this one message into Claude Code",
+            "text": "Copy the full message below, paste it into Claude Code, and press Enter. Claude does the rest and asks permission before running commands, so choose Yes.\n\n``` Prompt: Install the YouTube Agent Skill\nInstall the YouTube Agent Skill for me from this GitHub repo:\nhttps://github.com/Jakeschincariol/youtube-agent-skill\n\nI'm not technical, so do everything yourself and explain each step in plain, simple words.\n\nSTEP 1: Check my operating system. Check that git and Python 3 are installed.\n- On a Mac, if either is missing, run xcode-select --install, tell me to click Install in the window that pops up, and wait for me.\n- On Windows, if either is missing, install them with winget (Git.Git and Python.Python.3.12).\n\nSTEP 2: Download the repo. Copy all 11 skill folders (every folder starting with yt- inside the skills folder) into my personal skills folder at ~/.claude/skills/ so they work in every project. If git doesn't work, download https://github.com/Jakeschincariol/youtube-agent-skill/archive/refs/heads/main.zip and unzip it instead.\n\nSTEP 3: Create the folder ~/.claude/youtube/ and copy templates/voice.md into it, so the file ends up at ~/.claude/youtube/voice.md.\n\nSTEP 4: Install yt-dlp so the /yt-viral skill can pull public video lists from YouTube channels. Try pip first. If that fails, use Homebrew on Mac or winget on Windows. If it still fails, tell me and move on.\n\nSTEP 5: Test that the tools work by running this once (on Windows, use python instead of python3):\npython3 ~/.claude/skills/yt-script/hookscore.py --hook \"I tried every AI video tool so you don't have to\"\n\nSTEP 6: Show me a simple table of the 11 skills you installed, with one line on what each does.\n\nSTEP 7: End with these exact next steps for me, in a short numbered list:\n1. Type /exit, then type claude to restart\n2. Type /skills and check that all 11 yt- skills are listed\n3. Set up my voice file\n```\n\n> On a Mac, a pop-up may ask to install \"command line developer tools\". Click Install, wait for it to finish, then tell Claude \"done\"."
+          },
+          {
+            "title": "Restart and check",
+            "text": "1. Type /exit and press Enter.\n2. Type claude and press Enter.\n3. Type /skills and press Enter.\n\nYou should see all 11: yt-script, yt-package, yt-edit, yt-comment, yt-plan, yt-viral, yt-retention, yt-shorts, yt-seo, yt-chapters, yt-audit.\n\n> If /yt-script doesn't show up, type /exit then claude. Still missing? Tell Claude: \"Check that the yt- folders are inside ~/.claude/skills\"."
+          },
+          {
+            "title": "Teach it your voice",
+            "text": "Every skill reads one file: your voice file. Do this once and every script, title and reply sounds like you.\n\nIf you already have videos, paste this into Claude Code:\n\n``` Prompt: Build my voice file from videos\nWrite my voice.md from these 3 videos and save it to\n~/.claude/youtube/voice.md.\nPull the captions with yt-dlp. If that doesn't work, tell me and I'll paste the scripts.\n\n1. [LINK TO YOUR VIDEO]\n2. [LINK TO YOUR VIDEO]\n3. [LINK TO YOUR VIDEO]\n```\n\nIf you have no videos yet, paste this instead:\n\n``` Prompt: Build my voice file from an interview\nInterview me one question at a time, then write my voice.md and save it to ~/.claude/youtube/voice.md.\n```\n\n> A better voice file means better output. You can redo it any time with your best 3 videos."
+          },
+          {
+            "title": "Use the skills",
+            "text": "Type the command, then your idea or file. Swap the examples for your own topics.\n\n- /yt-script: turns one idea into a full script, with 5 scored hooks from 21 hook formulas. Try: /yt-script 5 free AI tools that replace a video editor\n- /yt-package: writes 10 title options and a thumbnail idea for the best one. Try: /yt-package my video about free AI video editors\n- /yt-edit: tells you where to cut (dead air, filler, retakes) with timecodes. Attach your transcript (.srt), then type /yt-edit\n- /yt-comment: sorts your comments, drafts replies in your voice, and picks one to pin. Paste your comments, then type /yt-comment\n- /yt-plan: plans your week around the hours you actually have. Try: /yt-plan I have 6 hours this week\n- /yt-viral: finds videos in your niche that beat their own channel's average. Try: /yt-viral check these channels: [3 to 5 channel links]\n- /yt-retention: reads your retention data and shows where people leave and why. Attach your retention export from YouTube Studio, then type /yt-retention\n- /yt-shorts: finds Shorts inside a long video and writes a new first line for each. Attach your transcript, then type /yt-shorts\n- /yt-seo: writes your description, suggests tags, and lists 3 search terms to target. Try: /yt-seo my video about free AI video editors\n- /yt-chapters: builds chapters from your transcript that YouTube will actually show. Attach your transcript, then type /yt-chapters\n- /yt-audit: reviews your whole channel and gives you ONE fix, not twenty. Try: /yt-audit my channel: [YOUR CHANNEL LINK]\n\nTo go from a viral idea straight to a finished package, paste this:\n\n``` Prompt: Viral idea to script to package\nUse /yt-viral on these channels: [3 to 5 channel links in your niche]. Pick the top idea I could make this week. Then use /yt-script to write it in my voice. Then use /yt-package to give me titles and a thumbnail idea.\n```\n\n> Thumbnails come out as a written brief (expression, framing, 3 words, background). You or your designer make the image. /yt-edit gives a cut list with timecodes, and you or your editor do the cutting.\n\n> Hook scores are a guide, not a promise. A low score means look again, a high score is not a guarantee. If a skill needs a number it doesn't have, it asks you rather than making one up.\n\n> For the transcript skills, download an .srt from YouTube Studio -> Subtitles, or from any transcription tool."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "YouTube Agent Skill on GitHub",
+        "url": "https://github.com/Jakeschincariol/youtube-agent-skill"
+      },
+      {
+        "type": "tool",
+        "label": "yt-dlp",
+        "url": "https://github.com/yt-dlp/yt-dlp"
+      },
+      {
+        "type": "guide",
+        "label": "All 11 skills",
+        "url": "https://github.com/Jakeschincariol/youtube-agent-skill/tree/main/skills"
+      },
+      {
+        "type": "template",
+        "label": "Voice file template",
+        "url": "https://github.com/Jakeschincariol/youtube-agent-skill/blob/main/templates/voice.md"
+      },
+      {
+        "type": "guide",
+        "label": "Claude Code install docs",
+        "url": "https://code.claude.com/docs/en/setup"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/009.webp"
+  },
+  {
+    "id": "010",
+    "date": "2026-10-23",
+    "title": "Reverse-engineer any app with REA",
+    "category": "Vibe Coding",
+    "summary": "REA is a free, open-source tool that runs locally and lets your coding agent study any app, break down how it works, and rebuild its features in your own project.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro or higher). Claude Code is not on the free plan.\n- A Mac or Windows computer.\n- Node.js 22.19 or newer (REA needs it; if it's missing, Claude installs it for you in Step 2).\n- Under 5 minutes."
+          },
+          {
+            "title": "Install Claude Code",
+            "text": "Claude Code is the agent that runs REA. Install it once and you're set.\n\nOn Mac, open Terminal (press Cmd + Space, type Terminal, hit Enter) and paste this:\n\n``` Command (Mac): Install Claude Code\ncurl -fsSL https://claude.ai/install.sh | bash\n```\n\nOn Windows, open PowerShell (press Win, type PowerShell, hit Enter) and paste this:\n\n``` Command (Windows): Install Claude Code\nirm https://claude.ai/install.ps1 | iex\n```\n\nOnce it finishes, type claude in your terminal and log in with your Claude account.\n\n> If claude is command not found, close and reopen your terminal, or restart your laptop."
+          },
+          {
+            "title": "Let Claude set up REA",
+            "text": "Open Claude Code in any folder on your laptop and paste this single message:\n\n``` Prompt: Set up REA\nClone the REA (Reverse Engineer Anything) repo from GitHub into a new folder called \"rea\", install all dependencies, set up the environment, and confirm everything is ready to run. Walk me through any configuration I need to add.\n```\n\nClaude clones the repo, installs every dependency, sets up the config files, and tells you if any API keys are needed and where to get them. Wait for Claude to confirm the setup is done before moving on.\n\n> If the clone fails, check your internet and paste this message again."
+          },
+          {
+            "title": "Point REA at your first app",
+            "text": "Once setup is done, paste this into Claude Code and replace the bracket with the app you want to decode:\n\n``` Prompt: Analyze an app\nI want to use REA to reverse engineer [NAME OF THE APP].\nAnalyze how it works, break down its core features,\nand show me how I could rebuild it in my own project.\n```\n\nFor example: \"I want to use REA to reverse engineer Notion's sidebar navigation. Analyze how it works, break down its core features, and show me how I could rebuild it in my own project.\" REA scans the app, maps its structure, and hands you a breakdown.\n\n> Start with one simple feature, not an entire app, and point REA at open-source apps first. The results are cleaner and you see the quality quickly.\n\n> Not sure what to point it at? Ask Claude: \"Suggest 5 apps I could reverse engineer with REA based on my project.\" If REA can't access an app, some apps block analysis, so try a different or open-source target."
+          },
+          {
+            "title": "Rebuild the feature",
+            "text": "After REA gives you the breakdown, paste this:\n\n``` Prompt: Build the feature\nNow use that breakdown to build this feature inside my project.\nMy project uses [YOUR STACK - React, Next.js, Tailwind, etc.]. Create the files, write the code, and show me how to test it.\n```\n\nClaude writes the actual code for you based on what REA just decoded.\n\n> Ask Claude to explain what REA found before building, so you learn as you go. Save every breakdown and you'll build a library of app blueprints you own. Beyond single features, you can decode a competitor's dashboard, revive old apps or firmware, or rebuild an offline tool.\n\n>! Use REA to learn how apps work and to rebuild features in your own code. Do not copy a competitor's proprietary assets or code wholesale, and respect each app's terms of use."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "REA on GitHub",
+        "url": "https://github.com/morluto/rea"
+      },
+      {
+        "type": "guide",
+        "label": "Claude Code docs",
+        "url": "https://docs.claude.com/claude-code"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/010.webp"
+  },
+  {
+    "id": "011",
+    "date": "2026-10-23",
+    "title": "Run God's Eye View, a live OSINT world map",
+    "category": "Research",
+    "summary": "God's Eye View is a free, open-source 3D globe that fuses 15 layers of public data, from live flights and ships to satellites, CCTV and fires, into one real-time map you run locally.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- macOS, Windows, or Linux.\n- Node.js 24.x or 26.x. Node 22 and older will fail, and skip Node 25.\n- A modern browser (Chrome, Edge or Safari).\n\n>! Every layer is public data (OSINT), nothing scraped or hacked. But some bundled data is non-commercial, and third-party terms (such as Cesium ion and Google) apply. Check the repo's LICENSE file before any commercial use."
+          },
+          {
+            "title": "Install with Pinokio (easiest)",
+            "text": "Pinokio is a one-click installer, best if you're not technical.\n\n1. Download the Pinokio desktop app from pinokio.computer.\n2. Open Pinokio and search for \"God's Eye View\".\n3. Click Install and wait about 2 minutes.\n4. Click Launch. It opens in your browser.\n\nEvery data layer is on by default."
+          },
+          {
+            "title": "Install from the terminal (optional)",
+            "text": "If you'd rather use the terminal, open it in an empty folder and run:\n\n``` Command: Install God's Eye View\ngit clone https://github.com/bilawalsidhu/gods-eye-view.git\ncd gods-eye-view\nnpm ci\nnpm run dev\n```\n\nThe first npm ci takes 2 to 5 minutes.\n\n> If the dev server complains about your setup, run npm run doctor, which checks your Node version and config."
+          },
+          {
+            "title": "Open the live map",
+            "text": "Once it's running, open this in your browser:\n\n``` Open in browser: The map\nhttp://localhost:4173\n```\n\nThe globe loads with all 15 layers on: live flights, military aircraft, ships, satellites, space launches, about 3,600 public CCTV cameras, radio stations, earthquakes, active fires, live buses, trains and ferries, traffic, datacenters, dams, and submarine cables."
+          },
+          {
+            "title": "Add free upgrades (optional)",
+            "text": "The app runs keyless out of the box. Optional free keys unlock more:\n\n- Cesium ion (free community tier): adds the Google photorealistic 3D globe. Free for personal use.\n- AISStream (free signup): real ship tracking instead of sample data. Free.\n- NASA FIRMS (free signup): real active fires instead of sample data. Free.\n- OpenAI API key: voice narration and AI annotations. About $0.02 to $0.10 a minute, with a $5 hard cap.\n- TomTom or Google Maps: higher-resolution map tiles. Metered.\n\n> Cesium ion's free tier is worth adding. The photorealistic 3D globe is the look that sets this apart from a flat map."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "God's Eye View on GitHub",
+        "url": "https://github.com/bilawalsidhu/gods-eye-view"
+      },
+      {
+        "type": "tool",
+        "label": "Pinokio",
+        "url": "https://pinokio.computer"
+      },
+      {
+        "type": "tool",
+        "label": "Node.js",
+        "url": "https://nodejs.org"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/011.webp"
+  },
+  {
+    "id": "012",
+    "date": "2026-10-23",
+    "title": "Run your whole LinkedIn from Claude with 11 skills",
+    "category": "Content Creation",
+    "summary": "11 free Claude skills that write, humanize, plan and publish your LinkedIn, from posts and comments to your profile and weekly plan. Install once, then just ask Claude.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro or higher). Adding skills from GitHub and connectors needs a paid plan.\n- A Zapier account (free to start), to connect LinkedIn.\n- A LinkedIn account.\n- About 10 minutes."
+          },
+          {
+            "title": "Install the skills in Claude",
+            "text": "1. Go to claude.ai and log in.\n2. Open Settings -> Capabilities -> Skills.\n3. Click **Add from GitHub** and paste the repo link below, then click **Add**.\n\n``` Repo link\nhttps://github.com/sergebulaev/linkedin-skills\n```\n\nAll 11 skills should now show up in your Skills list:\n\n- Post Writer: writes posts using 21 hook formulas.\n- Comment Drafter: drafts your comments on other people's posts.\n- Reply Handler: handles replies on your own posts.\n- Profile Optimizer: rewrites your headline, About, and Featured.\n- Content Planner: plans your whole week of posts.\n- Humanizer: strips AI patterns and checks the draft with multiple AI detectors.\n- Hook Extractor: pulls the hook formula from any viral post.\n- Repurposer: turns a tweet, thread, or blog into a LinkedIn post.\n- Engager Analytics: shows who liked and commented, by tier.\n- Thread Monitor: flags which of your comments got a reply from the author.\n- Employee Advocacy: sets up a team advocacy program.\n\n> If the skills don't show up, refresh Claude. If they still don't, remove the repo and add it again."
+          },
+          {
+            "title": "Connect Zapier to Claude",
+            "text": "At this point Claude can write and plan, but it can't post yet. That needs Zapier.\n\n1. In Claude, go to Settings -> Connectors.\n2. Click **Add connector**, search Zapier, and click **Connect**.\n3. Log in with your Zapier account. No account? Sign up first at zapier.com."
+          },
+          {
+            "title": "Add LinkedIn inside Zapier",
+            "text": "1. In Zapier, open **MCP Servers** from the left menu.\n2. Click **Add Apps**, search LinkedIn, select it, and click **Add**.\n3. Log in with your LinkedIn account and approve the permissions Zapier asks for.\n\nYour LinkedIn is now connected to Zapier, and Zapier is connected to Claude.\n\n> If Zapier later asks for your LinkedIn login again, your token expired. Open MCP Servers -> LinkedIn -> **Reconnect**."
+          },
+          {
+            "title": "Use it",
+            "text": "From now on, just talk to Claude in plain English and the right skill runs on its own. For example:\n\n- \"Write a LinkedIn post about X\" runs the Post Writer.\n- \"Draft a comment on this post: [URL]\" runs the Comment Drafter.\n- \"Reply to the comments on my last post\" runs the Reply Handler.\n- \"Rewrite my LinkedIn headline\" runs the Profile Optimizer.\n- \"Plan my week of LinkedIn posts\" runs the Content Planner.\n- \"Humanize this draft\" runs the Humanizer.\n- \"Break down the hook in this post: [URL]\" runs the Hook Extractor.\n- \"Turn this tweet into a LinkedIn post\" runs the Repurposer.\n\nClaude always shows you the draft first. You approve, then it posts through Zapier.\n\n> If Claude drafts a post but won't publish, Step 2 or 3 isn't finished. Check the Zapier connector is connected in Claude and LinkedIn is added inside Zapier MCP."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude",
+        "url": "https://claude.ai"
+      },
+      {
+        "type": "tool",
+        "label": "Zapier",
+        "url": "https://zapier.com"
+      },
+      {
+        "type": "tool",
+        "label": "LinkedIn skills on GitHub",
+        "url": "https://github.com/sergebulaev/linkedin-skills"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/012.webp"
+  },
+  {
+    "id": "013",
+    "date": "2026-10-23",
+    "title": "Pit 100 Claudes against one prompt with Arena",
+    "category": "AI Tools",
+    "summary": "Arena is a free Claude skill that spins up 100 mini Claudes to answer the same prompt, critique each other, and eliminate the weak ones until only the best answer survives.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A laptop (Mac or Windows).\n- A paid Claude plan (Pro or higher). Claude Code and Arena's agents run on your plan.\n- 2 minutes for setup."
+          },
+          {
+            "title": "Install Claude Code",
+            "text": "This is the only manual install. After this, Claude handles everything for you.\n\nOn Mac, open Terminal and paste:\n\n``` Command (Mac): Install Claude Code\ncurl -fsSL https://claude.ai/install.sh | bash\n```\n\nOn Windows, open PowerShell and paste:\n\n``` Command (Windows): Install Claude Code\nirm https://claude.ai/install.ps1 | iex\n```\n\nOnce it finishes, type claude and press Enter. Log in with your Claude account when it asks.\n\n> If claude is command not found, close and reopen the terminal, then try again."
+          },
+          {
+            "title": "Install the Arena skill",
+            "text": "Inside Claude Code, paste this message and drop the Arena repo link where shown:\n\n``` Prompt: Install Arena\nInstall the Arena skill from this GitHub repo: [paste the repo link here]\n\nClone the repo, install it as a Claude skill, then run /skills to confirm it's loaded. Install any dependencies the repo needs.\n```\n\nClaude handles the clone, install and setup itself. When it's done, run /skills and you'll see Arena in the list.\n\n> If the repo doesn't clone, paste: \"Retry the Arena install and show me the exact error if it fails.\" If Arena doesn't show in /skills, paste: \"Reload the skills directory and run /skills again.\""
+          },
+          {
+            "title": "Run Arena on a prompt",
+            "text": "In the same Claude Code window, paste:\n\n``` Prompt: Run Arena\nUse the Arena skill on this prompt:\n\n[Paste the prompt you want 100 Claudes to fight over. Could be a coding problem, a piece of writing, a strategy question, a design decision, anything where you've already tried once and the answer wasn't sharp enough.]\n```"
+          },
+          {
+            "title": "Watch the 100 Claudes fight",
+            "text": "Here is what happens behind the scenes:\n\n1. Arena spawns 100 mini Claudes, each getting the same prompt.\n2. Each one solves it its own way, with different reasoning, structures and angles.\n3. They review each other's answers and point out mistakes.\n4. Weaker answers get eliminated round by round.\n5. One winner survives, and that is what you see.\n\nYou watch the rounds happen in the terminal. The final answer comes with a short note on why it beat the others."
+          },
+          {
+            "title": "When to reach for Arena",
+            "text": "Arena uses far more plan credit than a normal Claude run, 100 agents instead of 1. Save it for prompts where:\n\n- The first answer was clearly off.\n- The task is open-ended and the best answer isn't obvious.\n- You're about to ship, publish or send something and want the strongest version.\n- You've re-prompted 2 to 3 times and keep getting similar, mediocre answers.\n\nFor simple questions, a normal Claude chat is fine. Arena is the heavy artillery.\n\n>! Because Arena runs 100 agents at once, it uses a lot of your plan credit. If that feels like overkill, run it with fewer agents, for example: \"Run Arena on this prompt with 20 agents instead of 100: [your prompt]\".\n\n> To use it again later, open Claude Code and paste: \"Use the Arena skill on this: [your prompt]\"."
+          }
+        ]
+      },
+      {
+        "type": "guide",
+        "label": "Claude Code install docs",
+        "url": "https://docs.claude.com/claude-code"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/013.webp"
+  },
+  {
+    "id": "014",
+    "date": "2026-10-23",
+    "title": "Scrape any site into a dashboard with Claude",
+    "category": "Automation",
+    "summary": "Connect Claude to Apify, paste a URL, and Claude picks the scraper, tests it, runs it, and turns the data into a searchable dashboard you can filter and export.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro or higher). Connectors aren't on the free plan.\n- An Apify account. The free plan includes $5 of usage credit a month.\n- A website URL you want to scrape.\n- About 10 minutes."
+          },
+          {
+            "title": "Connect Claude to Apify",
+            "text": "This is a one-time setup. After this, every future scrape is just one prompt.\n\n1. Open Claude on desktop or web.\n2. Go to Settings -> Connectors.\n3. Search Apify and click **Connect**.\n4. A browser tab opens. Sign in to Apify and click **Authorize**.\n5. Come back to Claude. You'll see Apify listed as an active connector.\n\nClaude can now run scrapers on your behalf."
+          },
+          {
+            "title": "Paste the website and this prompt",
+            "text": "Open a new chat in Claude and paste this, with your URL:\n\n``` Prompt: Scrape a site\nI want to scrape this website: [PASTE URL HERE]\n\nAsk me what data I want to extract, then:\n1. Pick the best Apify Actor for the job\n2. Configure it for me\n3. Run a small test first (5-10 items)\n4. Show me a sample of what it pulled\n5. If it looks right, run the full scrape\n6. Save the results as a clean dataset\n\nI want to see the data, not raw JSON.\n```\n\nClaude takes over from here."
+          },
+          {
+            "title": "Answer Claude's questions",
+            "text": "Claude asks 2 or 3 things. Answer in plain English, no config files and no code. For a Shopify store, for example, it might ask:\n\n- Do you want product name, price, images, description, stock?\n- How many products: all of them, or the top 100?\n- Any specific category?"
+          },
+          {
+            "title": "Let it test first",
+            "text": "Claude runs a small test scrape (5 to 10 items) before the full run. This saves your Apify credit if something is wrong. You'll see a small preview of the fields it pulled, like product name, price, image URL and stock.\n\nIf it looks right, tell Claude \"run the full scrape.\" If a field is missing, tell Claude what to add, for example \"also grab the review count.\""
+          },
+          {
+            "title": "Get your dashboard",
+            "text": "Once the full scrape is done, ask Claude:\n\n``` Prompt: Build a dashboard\nBuild me a searchable dashboard for this data with:\n- Search bar\n- Filter by category and price\n- Sort by any column\n- Export to CSV\n```\n\nClaude builds it as an artifact. You can search any item instantly, filter by whatever fields you scraped, and download the whole thing as CSV or Excel."
+          },
+          {
+            "title": "Turn it into a service (optional)",
+            "text": "The same scrape-and-dashboard works as a paid service. Who pays for it:\n\n- E-commerce brand: a competitor pricing dashboard, updated weekly.\n- Real estate agent: every new listing in their city, filterable.\n- Local business: a directory of every competitor and their offers.\n- D2C founder: Amazon reviews of competitor products.\n- Recruiter: every job posting from target companies.\n\nA starting range is $200 to $500 for a one-time scrape plus dashboard, and $50 to $150 a month for weekly refreshes.\n\n>! Don't scrape sites that block it. Check the site's robots.txt. Public product pages are usually fine, but sites like LinkedIn and Facebook are a hard no.\n\n> Don't run huge scrapes on the free tier, the $5 credit runs out fast. Upgrade before a paid client project.\n\n> Always test one page first, even on a site you've scraped before, because pages change. And save the exact prompt you used, since the same prompt on the same site gives you a repeatable delivery."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude",
+        "url": "https://claude.ai"
+      },
+      {
+        "type": "tool",
+        "label": "Apify",
+        "url": "https://apify.com"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/014.webp"
+  },
+  {
+    "id": "015",
+    "date": "2026-10-23",
+    "title": "Turn Claude Code into a senior UI engineer",
+    "category": "Vibe Coding",
+    "summary": "Three free Claude skills plus two MCP servers give Claude Code real design taste and let it design in Figma, build the site, and test it in a real browser. Installs in about 10 minutes.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Claude Code installed and authenticated.\n- Node.js 18 or newer on your PATH.\n- The Figma desktop app (the web version won't work for the Figma MCP) and a Figma Dev or Full seat.\n- Any project folder to test the stack in.\n\nThe stack is five pieces: three skills (Emil Kowalski, Impeccable, Taste) are the design brain, and two MCP servers (Figma, Playwright) are the hands and eyes."
+          },
+          {
+            "title": "Install the Emil Kowalski skill",
+            "text": "This one handles animation craft, easing and the small details that make interfaces feel right. In your terminal, run:\n\n``` Command: Install the Emil skill\nnpx skills add emilkowalski/skills --agent claude-code\n```\n\nIt installs 6 sub-skills into .claude/skills/ of the current project:\n\n- emil-design-eng: the main skill (UI polish, animation decisions, component design).\n- review-animations: audits your animations against Emil's rules.\n- improve-animations: returns prioritized fix plans.\n- find-animation-opportunities: surfaces where motion helps, and where it hurts.\n- prototype: builds several genuinely different versions of a UI piece.\n- One more focused on design-decision reviews. They trigger automatically when you ask Claude to build, review or improve UI. To check, ask Claude \"What skills do you have available?\" and you should see the six Emil skills."
+          },
+          {
+            "title": "Install the Impeccable skill",
+            "text": "Impeccable adds about 20 slash commands for typography, color contrast, spacing and interaction states. Inside Claude Code, run these two commands:\n\n``` Command: Install Impeccable\n/plugin marketplace add pbakaus/impeccable\n/plugin install impeccable@impeccable\n```\n\nThe one you'll use constantly is /polish. It runs a full cleanup pass on the current file: typography, color contrast, spacing, interaction states, focus rings, dialog behaviour. It's the fastest way to make an AI-generated page not look AI-generated."
+          },
+          {
+            "title": "Install the Taste skill",
+            "text": "The Taste skill blocks generic AI output and pulls from a curated library of well-designed sites. Pick one option.\n\nOption A, the standalone community version (sharpest anti-slop discipline, most adopted):\n\n``` Command: Install Taste (Option A)\nnpx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"\n```\n\nOption B, a merged version that combines Emil, Impeccable and Taste into one deduplicated skill. Worth it if you find the three separate skills overlap:\n\n``` Command: Install Taste (Option B)\nnpx skills add h3nryprod01/design-taste\n```"
+          },
+          {
+            "title": "Set up the Figma MCP server",
+            "text": "Use the official plugin path. In your terminal, run:\n\n``` Command: Install the Figma plugin\nclaude plugin install figma@claude-plugins-official\n```\n\nThen restart Claude Code, run /plugin, open the **Installed** tab, select figma, press Enter, and complete the OAuth flow when the browser opens.\n\nNext, turn on Figma's Dev Mode MCP server on the Figma side:\n\n1. Open the Figma Desktop app (not the web version).\n2. Open a Figma Design file.\n3. With nothing selected, switch to **Dev Mode**.\n4. In the right sidebar, enable the **MCP Server**.\n5. You'll see confirmation the server is running.\n\nTest it by selecting a frame in Figma and prompting:\n\n``` Prompt: Convert a Figma frame\nConvert my current Figma selection into a React component with TailwindCSS.\n```"
+          },
+          {
+            "title": "Install the Playwright MCP server",
+            "text": "Playwright lets Claude open your site in a real browser, screenshot it and self-QA. Install it with:\n\n``` Command: Add Playwright MCP\nclaude mcp add playwright --scope user -- npx -y\n@playwright/mcp@latest\n```\n\nOr add it to your ~/.claude.json (or a per-project .mcp.json):\n\n``` Config: Playwright in .mcp.json\n{\n\"mcpServers\": {\n\"playwright\": {\n\"command\": \"npx\",\n\"args\": [\"-y\", \"@playwright/mcp@latest\"]\n}\n}\n}\n```\n\nRestart Claude Code. The first run downloads the Chromium binary (about 200MB, one time). Run /mcp and you should see playwright in the connected list. Test with:\n\n``` Prompt: Screenshot and check a page\nOpen my dev server at localhost:3000, screenshot it, and tell me if the hero section looks broken.\n```"
+          },
+          {
+            "title": "Use the full stack",
+            "text": "Once everything is installed, the whole loop runs in one prompt. For example:\n\n``` Prompt: Build a landing page\nBuild a landing page for a fintech SaaS called \"Vault\" - modern, minimal, with a strong hero, three feature cards, pricing (3 tiers), and a footer. Use Next.js + Tailwind + shadcn/ui.\n```\n\nUnder the hood: Taste reads the brief and pulls real reference direction, Emil decides what deserves motion and which easing to use, Impeccable enforces typography, contrast, spacing and states, Claude builds the code with all three as constraints, and Playwright opens the page in a real browser, checks mobile, tablet and desktop, and flags anything broken. Claude iterates until Playwright confirms it works.\n\nIf you have a Figma design ready, this does it in one shot:\n\n``` Prompt: Figma to production code\nConvert the design in my currently-selected Figma frame into production code. Match it pixel-perfectly. Test it in the browser when done.\n```"
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "Figma",
+        "url": "https://figma.com"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/015.webp"
+  },
+  {
+    "id": "016",
+    "date": "2026-10-23",
+    "title": "Run your resume past a 7-Claude hiring panel",
+    "category": "Career and Jobs",
+    "summary": "Paste your resume and a target job description, and a 7-reviewer panel inside Claude, from the ATS to a skeptic, judges you independently, then rewrites your resume with every weakness fixed.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Your current resume (copy the text, or have the file ready to upload).\n- The full job description for the role you actually want.\n- A Claude chat open at claude.ai.\n\n> Always give the panel a real job description. A resume isn't good or bad in a vacuum, it's good for a specific role, and the panel gets far sharper when it has a target to judge you against."
+          },
+          {
+            "title": "Open a fresh Claude chat",
+            "text": "Start a new conversation so nothing earlier pollutes the review."
+          },
+          {
+            "title": "Paste the panel prompt and fill in the blanks",
+            "text": "Copy the prompt below into Claude, but don't send it yet. First replace [PASTE THE JOB DESCRIPTION HERE] and [PASTE YOUR RESUME HERE] with your real text, then send. The panel is seven independent reviewers: the ATS, the recruiter, the hiring manager, a rival applicant, the CEO, a future teammate, and a skeptic. Each one judges you alone and doesn't see the others until the final summary.\n\n``` Prompt: The 7-person hiring panel\nYou are going to run my resume through a 7-person hiring panel for a specific job.\n\nRULES:\n- Each reviewer works INDEPENDENTLY and does not see the other reviewers' verdicts.\n- Each reviewer judges my resume ONLY against the job description below.\n- Be blunt and specific. I want the truth, not encouragement.\n- No generic advice - every point must reference something actually in my resume.\n\nFor EACH of the 7 reviewers, give me exactly this:\n- VERDICT: PASS / BORDERLINE / REJECT\n- SCORE: x/10\n- TOP 3 reasons for the verdict (specific to my resume)\n- THE ONE THING to fix that would most change their mind\n\nHere are the 7 reviewers and what each cares about:\n1. THE ATS - automated screener. Does it pass keyword match, required qualifications, and clean formatting to reach a human at all?\n2. THE RECRUITER - an 8-second human skim. Fit, gaps, red flags, level signals.\n3. THE HIRING MANAGER - interview yes/no. Impact, relevance to THIS role, proof over claims.\n4. A RIVAL APPLICANT - reads competitively. Where would a similar candidate beat me?\n5. THE CEO / EXECUTIVE - the business case. ROI, outcomes, ownership, leadership.\n6. A FUTURE TEAMMATE - \"do I want to work with this person?\" Clarity, collaboration, culture, trust.\n7. THE SKEPTIC - devil's advocate. Vague claims, buzzwords, unverifiable numbers, filler.\n\nAFTER all 7 reviews, give me:\nA) PANEL SUMMARY - the overall verdict, my average score, and the 3 problems that showed up across the most reviewers. B) THE REWRITE - a full, improved version of my resume with every issue fixed:\nstronger bullet points, real metrics where I have them (ask me\nif you need\nnumbers), tightened language, and ATS-friendly formatting. Keep\nit truthful -\nnever invent experience, titles, or results I didn't give you.\n\n=== JOB DESCRIPTION ===\n[PASTE THE JOB DESCRIPTION HERE]\n\n=== MY RESUME ===\n[PASTE YOUR RESUME HERE]\n```"
+          },
+          {
+            "title": "Read your panel report",
+            "text": "Claude returns a verdict, a score, and the single biggest fix from each of the 7 reviewers, then a combined summary.\n\n> Fix the cross-reviewer problems first. If 5 of 7 reviewers flag the same weakness, that's your highest-leverage edit."
+          },
+          {
+            "title": "Get your rewritten resume",
+            "text": "The prompt ends by asking Claude for a fixed, bulletproof version of your resume with every issue addressed.\n\n> Be honest with Claude. The rewrite is only as truthful as what you give it, so never let it invent titles or results. And keep real numbers: \"Grew revenue 40%\" beats \"responsible for growth\" with every reviewer."
+          },
+          {
+            "title": "Push it further (optional)",
+            "text": "Use these one at a time, after the first report.\n\nTo go deeper on one reviewer:\n\n``` Prompt: Go deeper on one reviewer\nReviewer 3 (the Hiring Manager) rejected me. Walk me through my resume line by line as that person, and show me how to rewrite each weak bullet.\n```\n\nTo add your real metrics:\n\n``` Prompt: Add real metrics\nHere are the real numbers from my last job: [paste details]. Rework my bullet points to use these, and flag any claim that still sounds vague.\n```\n\nTo tailor the same resume to a different job:\n\n``` Prompt: Tailor to a second job\nHere's a different job description: [paste it]. Re-run only the ATS and Hiring Manager, and tell me what to change so the SAME resume fits this role.\n```\n\nFor a final polish:\n\n``` Prompt: Final polish\nGive me the final resume as clean, copy-paste-ready text with consistent formatting, strong action verbs, and no buzzwords. Then list 5 things I should still double-check myself.\n```\n\n> Run the panel per job, not once. The same resume scores differently against different roles, so re-run it for each serious application."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude",
+        "url": "https://claude.ai"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/016.webp"
+  },
+  {
+    "id": "017",
+    "date": "2026-10-23",
+    "title": "Turn messy ideas into pro prompts with Prompt Master",
+    "category": "Prompting",
+    "summary": "Prompt Master is a free Claude skill that turns a messy one-liner into a production-grade prompt for any AI tool, auto-detecting the target and catching the patterns that waste tokens.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A Claude.ai account, or Claude Code installed.\n- About 60 seconds. No Python, no Node, no API keys."
+          },
+          {
+            "title": "Install Prompt Master",
+            "text": "Pick the path for where you want it to live.\n\nPath A, into claude.ai (the simplest):\n\n1. Go to the repo (link in Tools).\n2. Click the green **Code** button, then **Download ZIP**.\n3. Open claude.ai.\n4. In the sidebar, go to **Customize** -> **Skills**.\n5. Click **Upload** and drop in the ZIP.\n6. Done. Prompt Master is now available in every chat.\n\nPath B, into Claude Code (for developers). Clone it into your global skills folder:\n\n``` Command: Install into Claude Code (global)\nmkdir -p ~/.claude/skills\ngit clone https://github.com/nidhinjs/prompt-master.git ~/.claude/skills/prompt-master\n```\n\nRestart Claude Code and it's available in every project. For one project only, clone it into that repo instead:\n\n``` Command: Install into one project\ngit clone https://github.com/nidhinjs/prompt-master.git .claude/skills/prompt-master\n```\n\nPath C, into Cursor. Same pattern, different folder:\n\n``` Command: Install into Cursor\ngit clone https://github.com/nidhinjs/prompt-master.git ~/.cursor/skills/prompt-master\n```\n\n>! Do NOT place it in ~/.cursor/skills-cursor/. That folder is reserved for Cursor's built-in skills, and putting third-party ones there breaks things."
+          },
+          {
+            "title": "Invoke it",
+            "text": "Four ways to call it. All use the same engine, but each enters a different mode.\n\nStyle 1, natural language (most common). Just describe what you want:\n\n``` Prompt: Natural language\nTurn this into a proper prompt: I want Claude to build a landing page for my dog grooming business\n```\n\nPrompt Master detects the target, picks the right architecture, catches the missing details (no colours, no sections, no stack), and returns a finished prompt.\n\nStyle 2, explicit invocation, for tighter control when the target isn't obvious:\n\n``` Prompt: Explicit invocation\n/prompt-master\nTarget: Midjourney\nTask: A cinematic hero shot of my product\n```\n\nStyle 3, decompiler mode, to reverse-engineer an existing prompt:\n\n``` Prompt: Decompile a prompt\nDecompile this prompt and tell me what's wrong with it:\n\n\"Write me a blog post about AI. Make it engaging.\"\n```\n\nIt identifies which patterns the prompt violates and returns a rewritten version with the fixes annotated.\n\nStyle 4, cross-tool translation, to move a prompt from one tool's dialect to another:\n\n``` Prompt: Translate across tools\nTake this Midjourney prompt and translate it to Sora:\n\n\"cinematic wide shot, golden hour, 35mm anamorphic, shallow depth of field\"\n```\n\n> As an example of what you get, typing \"help me build the landing page for my SaaS, it's like Linear but for lawyers\" comes back as a full prompt with the context, objective, style, tone, audience, stack, section order, file structure and stop-conditions all filled in, so the AI never has to ask a clarifying question."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude",
+        "url": "https://claude.ai"
+      },
+      {
+        "type": "tool",
+        "label": "Prompt Master on GitHub",
+        "url": "https://github.com/nidhinjs/prompt-master"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/017.webp"
+  },
+  {
+    "id": "018",
+    "date": "2026-10-23",
+    "title": "Build a live data dashboard from a folder in Claude",
+    "category": "Data and Analytics",
+    "summary": "Point Claude at a folder of CSVs or a connected app and it builds an interactive dashboard that re-pulls your data, picks the charts, and can answer plain-English questions about the numbers.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro or higher). Pro is $20 a month ($17 a month billed annually). This isn't on the free plan.\n- Claude on web, desktop, or mobile. Reading a local folder needs the desktop app, but a connected data source (Google Drive, Notion, and so on) works anywhere.\n- A data source, one of: a local folder of CSV, XLSX or JSON files, or a connected app (Google Drive, Notion, Airtable, Slack, or a custom MCP server).\n\n> Cowork and chat are now one Claude, so you don't install anything separate. The dashboard is an artifact Claude builds for you."
+          },
+          {
+            "title": "Prepare your data",
+            "text": "Pick whichever you have.\n\nFor a local folder: make a folder anywhere on your computer and drop your files in, for example a folder called company-data holding sales-2026-q3.csv, customer-list.csv and product-inventory.xlsx. Claude can read CSV, XLSX, JSON, plain text and markdown.\n\nFor a connected app (best for a dashboard that stays live for a team):\n\n1. In Claude, open the sidebar and go to **Connectors**.\n2. Enable the connector for your data source (Google Drive, Notion, and so on).\n3. Complete the sign-in. Claude can now pull from that source, so the dashboard reflects the source whenever it updates."
+          },
+          {
+            "title": "Ask Claude to build the dashboard",
+            "text": "Start a new chat and paste this, pointing it at your folder:\n\n``` Prompt: Build the dashboard\nBuild me an interactive dashboard artifact from the folder at ~/Desktop/company-data.\n\nRequirements:\n- Read all the CSV and XLSX files in the folder\n- Pick the most useful chart types based on the columns\n- Include a \"Refresh\" button that re-reads the data each click and updates every chart\n- Add a natural-language chat box at the bottom that can answer questions about the data, like \"what's our best-performing region this quarter?\"\n- Show the timestamp of when the data was last refreshed\n- Design: clean, professional, minimal, with colours that work on both light and dark backgrounds\n- Layout: KPI cards at the top, charts in the middle, chat box at the bottom, and the raw-data table collapsed by default\n```\n\nIf your data is in a connected app instead, change the first line to name it, for example: \"Build me an interactive dashboard artifact from my Google Drive folder called Company Data using the Google Drive connector.\" Keep the rest the same.\n\nClaude reads your data (or calls the connector), picks the visualizations, and drops the dashboard into your Artifacts view."
+          },
+          {
+            "title": "Open it and refresh",
+            "text": "Open the artifact from your Artifacts view. It opens in its own persistent view, and re-reads the folder or re-calls the connector so you see current data. The chat box lives inside the dashboard, and because it runs as whoever is using it, each person needs their own Claude access to ask it questions."
+          },
+          {
+            "title": "Share it (Team or Enterprise)",
+            "text": "On a Team or Enterprise plan you can share the artifact inside your organization. Whoever opens it signs in with the same organization, and it connects to their own connectors and data. There are no public or external links yet. On Pro the dashboard stays private to your account."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude",
+        "url": "https://claude.ai"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/018.webp"
+  },
+  {
+    "id": "019",
+    "date": "2026-10-23",
+    "title": "Run your decision past a 5-advisor LLM Council",
+    "category": "Business and Startups",
+    "summary": "LLM Council is a free Claude Code skill that runs your question past five independent advisors, from a contrarian to an executor, makes them peer-review each other, and ends with one chairman's verdict.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A paid Claude plan (Pro or higher). Claude Code isn't on the free plan.\n- Claude Code installed and authenticated, or Claude on claude.ai.\n- Nothing else. No API keys, no MCP servers, no scripts. It's a pure skill that runs on subagents."
+          },
+          {
+            "title": "Install LLM Council",
+            "text": "Pick a path. Path A is the easiest.\n\nPath A, let Claude install it for you. Open Claude Code (or claude.ai) and paste this:\n\n``` Prompt: Install LLM Council\nPlease install this Claude skill for me. The SKILL.md file lives at:\n\nhttps://github.com/oliwoodman/llm-council-skill\n\nSet it up as a global skill so I can use it in any project.\nWalk me through anything you need from me.\n```\n\nClaude fetches the file, creates the folder at ~/.claude/skills/llm-council/, and confirms it's ready. Restart Claude Code once and you're done.\n\nPath B, clone it into your global skills folder yourself:\n\n``` Command: Install by git clone\ngit clone https://github.com/oliwoodman/llm-council-skill ~/.claude/skills/llm-council\n```\n\nPath C, a single command, no git needed (this uses a fork with the same advisor structure):\n\n``` Command: Install by skill add\nclaude skill add --url\nhttps://raw.githubusercontent.com/automatorsplus/llm-council-skill/main/.claude/skills/llm-council/SKILL.md\n```"
+          },
+          {
+            "title": "Run a council",
+            "text": "Open any Claude Code session and start your message with the trigger phrase, then your question:\n\n``` Prompt: Run a council\ncouncil this: [your question or decision]\n```\n\nFor example:\n\n- council this: should I quit my job to build my SaaS full-time?\n- council this: my agency is doing $10k a month, should I hire my first employee or stay solo?\n- council this: I'm considering raising my consulting rate from $50 to $100 an hour. Do I lose more clients than I gain?\n- pressure-test this: I want to launch a paid community at $29 a month for founders. Here's my plan: [describe it]\n\nClaude spins up the 5 advisors in parallel, runs an anonymous peer review, then the chairman's verdict. A full council takes about 4 to 6 minutes."
+          },
+          {
+            "title": "Read the verdict",
+            "text": "Five advisors each answer first, each from one lens:\n\n- The Contrarian: hunts for the fatal flaw, what's missing, what will fail. Won't hedge.\n- The First Principles Thinker: asks if you're even solving the right problem, and reframes it from the ground up.\n- The Expansionist: looks for the upside everyone else missed, ignoring risk (that's the Contrarian's job).\n- The Outsider: has zero context about you or your field, and reacts purely to what's in front of it.\n- The Executor: only cares what you actually do first. Every answer maps to \"what do you do Monday morning?\".\n\nThen all five peer-review each other anonymously, grading the others without knowing who wrote what, which keeps the review honest instead of defensive. Finally the Chairman commits to one verdict under about 250 words: the call (go, don't, or conditional), the strongest reason, the biggest risk, and the next step within 7 days. If Claude starts to hedge, the skill forces it to commit.\n\n> The Outsider is the most underrated advisor. Run \"council this: [your product description]\" and it tells you what a first-time visitor doesn't understand about your product, the way a stranger would read your landing page. That's often worth more than the other four combined.\n\n> This skill runs 5 subagents that are all Claude, different lenses on one model. If you want the real multi-model version, where Claude, GPT, Gemini and Grok argue and peer-review each other, that's Andrej Karpathy's original (link in Links). It's a local web app, about 15 minutes to set up, and needs an OpenRouter API key with roughly $5 to $10 in credits."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Claude Code",
+        "url": "https://claude.ai/download"
+      },
+      {
+        "type": "tool",
+        "label": "LLM Council on GitHub",
+        "url": "https://github.com/oliwoodman/llm-council-skill"
+      },
+      {
+        "type": "guide",
+        "label": "Alternative installer fork",
+        "url": "https://github.com/automatorsplus/llm-council-skill"
+      },
+      {
+        "type": "guide",
+        "label": "Karpathy's multi-model version",
+        "url": "https://github.com/karpathy/llm-council"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/019.webp"
+  },
+  {
+    "id": "020",
+    "date": "2026-10-23",
+    "title": "Make any photo move like you with Wan AI",
+    "category": "Video Generation",
+    "summary": "Wan AI's Animate tool copies your expressions and movements from a video you record onto any character in a photo, and renders it as an HD video, free in the browser.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- A wan.video account. Sign in with Google or email, no app or download.\n- A clear, front-facing reference photo of the character you want to animate.\n- A short video of yourself, 5 to 15 seconds, doing the motion you want.\n- A browser. Free credits are added to your account on signup, enough to test it a few times.\n\n>! Only animate photos you have the right to use, and don't use this to impersonate a real person. Putting someone's face on your movements without their consent can cause real harm."
+          },
+          {
+            "title": "Sign in at wan.video",
+            "text": "1. Open wan.video in your browser.\n2. Click **Sign in** (top right).\n3. Sign in with Google, or use email."
+          },
+          {
+            "title": "Open the Wan Animate tool",
+            "text": "1. On the homepage, click **Create** (or **Generate**) in the top menu.\n2. In the sidebar, find **Video -> Wan Animate** (sometimes shown as **Animate** or **Move**).\n3. Click it to open the animation workspace. You'll see two upload slots, one for the image and one for the video."
+          },
+          {
+            "title": "Upload your reference image",
+            "text": "This is the character that will move. Best results come from a clear, front-facing photo with the full face visible, no heavy shadows, head-and-shoulders or half-body, and only one subject in the frame.\n\nAvoid side profiles, faces covered by hands, sunglasses or masks, photos with more than one person, and anything low-resolution or blurry.\n\nClick the **Image** slot, drag your photo in (or click to browse), and wait for the preview to load."
+          },
+          {
+            "title": "Record and upload your driving video",
+            "text": "This is the video Wan copies the motion from. Frame yourself from the chest or waist up (the more of you is visible, the more movement it can transfer), face the camera directly, with even lighting and a plain background. Keep it to 5 to 15 seconds, and do whatever you want the character to do: talk, laugh, wave, gesture.\n\nShoot it on your phone and upload the file, or record directly in Wan if that option is there. Then click the **Video** slot, upload the clip, and wait a few seconds for it to process."
+          },
+          {
+            "title": "Set your output and generate",
+            "text": "Check the side panel before you generate:\n\n- Resolution: 720p or 1080p. 1080p costs more credits but is worth it for social.\n- Aspect ratio: 9:16 for Reels and Shorts, 16:9 for YouTube, 1:1 for square.\n- Duration: matches your driving video by default.\n- Mode or style: pick \"Animate\" or \"Motion Transfer\", not \"Replace\" or \"Relight\" unless that's what you want.\n\nThen click **Generate**. The video queues and renders, usually 1 to 3 minutes for a short clip. Leave the tab open and watch the progress bar."
+          },
+          {
+            "title": "Review and download",
+            "text": "When it finishes, the preview auto-plays. Watch it end to end and check three things: the character still looks like the reference, the movements match your video, and there's no weird warping around hands or edges. If it looks good, click **Download** and save the MP4. If it looks off, tweak the reference image or driving video (better lighting, cleaner background, simpler motion) and run it again.\n\n> The first shot rarely lands perfect, so budget 2 to 3 generations for one clean output. Simpler driving motion gives a cleaner result, and keeping your hands away from your face avoids the most common finger and hand glitches. Match the character's proportions to yours, since a very different head-to-body ratio can cause stretching.\n\n> Once you have a clean output, record your motion once and apply it to several reference images to keep one character consistent across a whole series."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Wan AI",
+        "url": "https://wan.video"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/020.webp"
+  },
+  {
+    "id": "021",
+    "date": "2026-10-23",
+    "title": "Keep Claude Code running past its limits with 9Router",
+    "category": "AI Tools",
+    "summary": "9Router is a free local proxy that sits between your coding tool and 40+ AI providers. When your Claude plan hits its limit, it switches to a cheap or free backup mid-session so you keep working.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Node.js 18 or newer, and npm.\n- Claude Code, or any coding tool with a custom endpoint field.\n- A browser for the dashboard.\n- Best paired with an existing Claude plan (Max especially). 9Router shines as the fallback when you already have one."
+          },
+          {
+            "title": "Install and start 9Router",
+            "text": "Open your terminal and install it:\n\n``` Command: Install 9Router\nnpm install -g 9router\n```\n\nThen start it:\n\n``` Command: Start 9Router\n9router\n```\n\nIt prints a dashboard address and an API endpoint, both on port 20128.\n\nIf you'd rather have a guided 5-minute onboarding that walks you through provider setup, use the starter kit instead:\n\n``` Command: Starter kit (optional)\ngit clone https://github.com/aiflowlearn/9router-starter-kit\ncd 9router-starter-kit\n./install.sh\n./configure.sh\n```"
+          },
+          {
+            "title": "Open the dashboard",
+            "text": "Go to http://localhost:20128 in your browser. You'll land on the Providers page with nothing connected yet."
+          },
+          {
+            "title": "Connect providers (start with 2 or 3)",
+            "text": "Click **Providers** and pick from the list. A good beginner stack across three tiers:\n\n- Tier 1, your subscription: Claude Code. Click **Connect** and sign in. 9Router now tracks your 5-hour and weekly quotas in real time.\n- Tier 2, cheap paid backups: GLM (Z.ai) at about $0.60 per 1M tokens (sign up at z.ai, create an API key, paste it), and MiniMax at about $0.20 per 1M (sign up at minimax.io, create a key, paste it).\n- Tier 3, free fallbacks: iFlow (free Kimi K2 Thinking, OAuth login), Qwen (free Qwen models, OAuth login), and Kiro (free Claude 4.5, GLM-5 and MiniMax, via AWS Builder ID, Google or GitHub login).\n\nEvery free connection is one browser click, no credit card. Provider prices are set by the providers and can change, so check their sites.\n\n>! Don't add Gemini CLI to this chain if you plan to use it from non-Gemini tools. Google's terms restrict free Gemini CLI tokens to Gemini CLI itself, and routing them through 9Router in Claude Code may get your account banned. The dashboard flags this next to Gemini CLI, so respect that flag."
+          },
+          {
+            "title": "Build your fallback chain",
+            "text": "In the dashboard, go to **Combos** and click **Create Combo**. A solid chain for a Claude Code user, in order:\n\n1. Your Claude Code subscription (use it fully first).\n2. A cheap backup for when the quota runs out, such as GLM 5.2.\n3. A free emergency fallback, such as Kimi K2 Thinking via iFlow.\n\nSave the combo. The result: your existing Claude plan does the heavy lifting, a few dollars of cheap overflow covers the gaps, and the free tier catches the rest, so your plan's limits stop interrupting you mid-task."
+          },
+          {
+            "title": "Point Claude Code at 9Router",
+            "text": "Generate a dashboard key in the 9Router dashboard under **Settings** -> **API Keys**, then in your terminal:\n\n``` Command: Route Claude Code through 9Router\nexport ANTHROPIC_BASE_URL=\"http://localhost:20128/v1\"\nexport ANTHROPIC_AUTH_TOKEN=\"your-9router-dashboard-key\"\nexport ANTHROPIC_MODEL=\"claude-with-fallback\"\nclaude\n```\n\nUse your own combo's name in place of claude-with-fallback. That's the whole setup."
+          },
+          {
+            "title": "Turn on RTK Token Saver",
+            "text": "In the dashboard, go to **Settings** -> **RTK Token Saver** -> **Enable**. RTK compresses tool_result outputs (long file dumps, terminal logs, JSON blobs) before they reach the model, for about 20 to 40% token savings depending on how tool-heavy your work is. Your source code is preserved exactly; RTK only compresses the noise around it.\n\n> For heavier compression, also enable Caveman mode alongside RTK. Combined savings can reach around 65% on log-heavy sessions."
+          },
+          {
+            "title": "Check the fallback works",
+            "text": "1. Use Claude Code normally until you approach your 5-hour limit (the dashboard shows a countdown).\n2. Watch the \"current provider\" indicator in the dashboard.\n3. When the Claude quota runs out, the indicator flips to your Tier 2 provider (for example GLM 5.2).\n4. Keep coding. Same interface, different backend, no re-auth."
+          },
+          {
+            "title": "Point other tools at 9Router (optional)",
+            "text": "Same base URL, different settings per tool. In Cursor, set a custom endpoint to http://localhost:20128/v1 with your dashboard key. For Cline, Continue, RooCode or any OpenAI-compatible tool, set the base URL to http://localhost:20128/v1 in its config. For the Codex CLI:\n\n``` Command: Route Codex through 9Router\nexport OPENAI_BASE_URL=\"http://localhost:20128/v1\"\nexport OPENAI_API_KEY=\"your-9router-dashboard-key\"\n```"
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "9Router on GitHub",
+        "url": "https://github.com/decolua/9router"
+      },
+      {
+        "type": "tool",
+        "label": "Starter kit",
+        "url": "https://github.com/aiflowlearn/9router-starter-kit"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/021.webp"
+  },
+  {
+    "id": "022",
+    "date": "2026-10-23",
+    "title": "Run a free image, video and lip-sync AI studio",
+    "category": "AI Tools",
+    "summary": "Open Generative AI is one open-source app that bundles image, video and lip-sync generation across 200+ models into a single studio you can self-host or run in the browser.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Node.js 18 or newer and npm (for the self-host route).\n- A Muapi.ai account for the API key. The app is free, but generation runs through Muapi and is pay-per-use.\n- macOS, Windows, or Linux.\n\n>! You only generate with photos, voices and footage you have the right to use. Lip-sync turns a photo plus any voice into a talking video, so don't use it to impersonate a real person."
+          },
+          {
+            "title": "Install it",
+            "text": "Three paths. A and B are fastest to try; C is the full self-host.\n\nPath A, hosted web version (no install): open muapi.ai/open-generative-ai, click **Settings**, paste your Muapi API key (Step 2), and start generating.\n\nPath B, desktop app: on the repo's **Releases** page, download the .dmg (macOS), .exe (Windows) or .AppImage (Linux), install it, and paste your Muapi key on first launch.\n\nPath C, self-host. Clone the repo:\n\n``` Command: Clone the repo\ngit clone --recurse-submodules\nhttps://github.com/Anil-matcha/Open-Generative-AI.git\ncd Open-Generative-AI\n```\n\nSet it up (plain npm install isn't enough; this builds the workspace packages first):\n\n``` Command: Set up\nnpm run setup\n```\n\nLaunch it, then open http://localhost:3000 in your browser:\n\n``` Command: Launch\nnpm run dev\n```\n\n> The desktop app is unsigned, so macOS shows \"cannot verify developer\" (right-click, then Open) and Windows SmartScreen may block it (click More info, then Run anyway). Both are normal for small open-source projects."
+          },
+          {
+            "title": "Get and paste your Muapi key",
+            "text": "1. Go to muapi.ai and sign up.\n2. New signups usually get some free trial credits, but the amount varies, so confirm your current balance before you generate.\n3. Open **API Keys**, click **Create Key**, and copy it.\n4. On first launch the app asks for the key. Paste it. It's stored locally in your browser's localStorage and only ever sent to Muapi."
+          },
+          {
+            "title": "What's in the four studios",
+            "text": "- Image Studio: text-to-image and image-to-image across 50+ models (Flux, Midjourney, Ideogram, SDXL, Nano Banana 2, GPT-4o), plus multi-image input (up to 14 references) on compatible models.\n- Video Studio: text-to-video and image-to-video across many models (Sora 2, Veo 3, Kling v3, Wan 2.6, Seedance 2.0 and Pro, Hailuo 2.3, Runway Gen-3). Aspect ratios 16:9, 9:16, 4:3, 3:4, durations typically 5, 10 or 15 seconds.\n- Lip Sync Studio: portrait image plus audio into a talking video, or an existing video plus audio into a lip-synced video. Nine models across the two modes.\n- Cinema Studio: a style layer with preset camera, lens, focal length and aperture controls, for when prompt words alone aren't giving you the look."
+          },
+          {
+            "title": "Make a talking video from a photo",
+            "text": "1. Open Lip Sync Studio and switch to portrait plus audio mode.\n2. Upload your photo.\n3. Upload or record an audio clip in the voice you want (or generate one with a TTS tool).\n4. Pick a model: Infinite Talk I2V for realism, LatentSync for speed.\n5. Set the aspect ratio and duration.\n6. Generate."
+          },
+          {
+            "title": "Make a cinematic video from a photo",
+            "text": "1. Open Video Studio and switch to image-to-video mode.\n2. Upload your photo.\n3. Paste a prompt like the one below.\n\n``` Prompt: Cinematic motion\nCinematic slow push-in, warm sunset lighting, film grain, shallow depth of field.\n```\n\n4. Pick a high-quality model such as Seedance 2.0 Pro or Kling v3.\n5. Set the aspect to 16:9 and the duration to 5 to 10 seconds.\n6. Generate."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "Open Generative AI on GitHub",
+        "url": "https://github.com/Anil-matcha/Open-Generative-AI"
+      },
+      {
+        "type": "tool",
+        "label": "Muapi",
+        "url": "https://muapi.ai"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/022.webp"
+  },
+  {
+    "id": "023",
+    "date": "2026-10-23",
+    "title": "Run your coding tool on free and cheap AI with OmniRoute",
+    "category": "AI Tools",
+    "summary": "OmniRoute is a free local proxy that connects your coding tool to 200+ AI providers, routes each prompt to the cheapest option, falls back when one runs out, and compresses prompts to save tokens.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Node.js 18 or newer and npm (or Docker instead).\n- A coding tool with a custom endpoint: Claude Code, Codex CLI, Cursor, Cline, Copilot, Windsurf, Continue, or any OpenAI-compatible tool.\n- A browser for the dashboard."
+          },
+          {
+            "title": "Install OmniRoute",
+            "text": "Pick one. npm is the simplest.\n\n``` Command: Install with npm\nnpm install -g omniroute\n```\n\nOr run it with Docker:\n\n``` Command: Run with Docker\ndocker run -p 20128:20128 diegosouzapw/omniroute\n```\n\nOr download the desktop app (Mac, Windows, Linux) from omniroute.online. To check the npm install worked:\n\n``` Command: Check the version\nomniroute --version\n```"
+          },
+          {
+            "title": "Launch it",
+            "text": "Start OmniRoute:\n\n``` Command: Launch OmniRoute\nomniroute\n```\n\nIt prints a dashboard address and an API endpoint, both on port 20128."
+          },
+          {
+            "title": "Connect a few free providers",
+            "text": "Open http://localhost:20128/dashboard, go to **Providers**, and connect a few free tiers. Strong ones to start with:\n\n- iFlow (Kimi K2 Thinking): free, sign in with OAuth.\n- Qwen: free models, OAuth.\n- Kiro: free Claude 4.5, GLM-5 and MiniMax, via AWS Builder ID, Google or GitHub.\n- NVIDIA NIM: free credits included, sign up.\n- Groq: fast free tier, API key.\n- DeepSeek: free tokens on signup, API key.\n- GitHub Copilot: free tier, GitHub OAuth.\n\nClick **Connect** on any of these, no credit card needed. You can connect several and OmniRoute will use them all.\n\n>! Don't route Gemini CLI's free tokens through OmniRoute into other tools. Google's terms restrict free Gemini CLI tokens to Gemini CLI itself, and using them elsewhere can get your account banned. Connect it only if you'll use it from Gemini CLI."
+          },
+          {
+            "title": "Point your coding tool at OmniRoute",
+            "text": "Generate a dashboard key at **Dashboard** -> **Settings** -> **API Keys**, then point your tool's base URL at OmniRoute: http://localhost:20128/v1\n\nFor Claude Code, in your terminal:\n\n``` Command: Route Claude Code\nexport ANTHROPIC_BASE_URL=\"http://localhost:20128/v1\"\nexport ANTHROPIC_AUTH_TOKEN=\"your-dashboard-key\"\nclaude\n```\n\nFor Cursor, Windsurf or Antigravity, set a custom endpoint to http://localhost:20128/v1 in Settings. For the Codex CLI:\n\n``` Command: Route Codex\nexport OPENAI_BASE_URL=\"http://localhost:20128/v1\"\nexport OPENAI_API_KEY=\"your-dashboard-key\"\n```\n\nFor any other OpenAI-compatible tool, replace its openai.com base URL with http://localhost:20128/v1 and use your dashboard key."
+          },
+          {
+            "title": "Set your routing combo",
+            "text": "In the dashboard, go to **Combos** and build a chain. OmniRoute uses it in order and falls back down the list when one runs out. Three starters:\n\n- free-only: a chain of free providers such as Gemini 3 Flash, Kimi K2 Thinking and Qwen3 Coder Plus. Cost stays at $0 as long as you only use free tiers.\n- maximize-Claude: your Claude Code subscription first, a cheap backup like GLM 4.7 second, and a free fallback like Kimi K2 Thinking third.\n- always-on: a longer chain (Claude, a GPT codex model, GLM, MiniMax, then a free model) so a run rarely stops on you.\n\nSave a combo and use its alias (for example omniroute/free-only) as the model name in your coding tool.\n\n> Free tiers are set by the providers and can change or disappear, so treat a $0 setup as nice-to-have, not guaranteed."
+          },
+          {
+            "title": "Turn on compression",
+            "text": "In the dashboard, go to **Settings** -> **Compression** and pick a mode. It trades a little quality for fewer tokens:\n\n- Off: for debugging OmniRoute itself.\n- Lite: about 15% savings, safest.\n- Standard: about 30%, a good default.\n- Aggressive: about 50%, for long coding sessions.\n- Ultra: about 75%, the most savings with some quality tradeoff."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "OmniRoute on GitHub",
+        "url": "https://github.com/diegosouzapw/OmniRoute"
+      },
+      {
+        "type": "tool",
+        "label": "OmniRoute site",
+        "url": "https://omniroute.online"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/023.webp"
+  },
+  {
+    "id": "024",
+    "date": "2026-10-23",
+    "title": "Turn one keyword into a finished short video",
+    "category": "Video Generation",
+    "summary": "MoneyPrinterTurbo is a free open-source pipeline that takes one keyword and builds a finished short video, script, voiceover, subtitles, music and stock footage, through a simple web UI.",
+    "icon": "",
+    "live": true,
+    "items": [
+      {
+        "type": "steps",
+        "label": "Step-by-step guide",
+        "steps": [
+          {
+            "title": "Before you start",
+            "text": "- Docker Desktop and Git installed. On Windows, set up WSL2 first.\n- A free Pexels API key (from pexels.com/api) for the stock footage.\n- An LLM provider and its API key, for the script. Free lanes exist (Ollama running locally, g4f, Pollinations, ModelScope); paid lanes (DeepSeek, OpenAI) cost about a cent per video.\n- 8 GB of RAM realistically. 4 GB only works in the all-cloud setup, and a local Ollama model needs 8 to 16 GB.\n- About 5 GB free disk, and 15 to 30 minutes for the first setup (the Docker image is about 3 GB).\n\n>! This is two keys, not one, a Pexels key and an LLM key. And \"setup in 10 seconds\" is only the command time. The first real install is 15 to 30 minutes, mostly the Docker download."
+          },
+          {
+            "title": "Get your API keys",
+            "text": "Stock footage (free): sign up at pexels.com and copy the API key from your account.\n\nLLM provider, pick one lane:\n\n- Free and cloud: g4f, Pollinations or ModelScope. Costs $0, but quality varies and it can be flaky.\n- Free and local: Ollama. Costs $0 but needs 8 to 16 GB of RAM for the model, installed separately.\n- Paid and reliable: OpenAI, DeepSeek, Moonshot or AIHubMix. Best script quality, roughly $0.001 per 60-second video.\n\nFor your first run, DeepSeek is the best price-to-quality balance (a few cents runs dozens of videos). For a strictly free path, Pollinations or g4f with Pexels footage gets you to a finished video at $0."
+          },
+          {
+            "title": "Clone and configure",
+            "text": "In your terminal:\n\n``` Command: Clone and copy the config\ngit clone https://github.com/harry0703/MoneyPrinterTurbo.git\ncd MoneyPrinterTurbo\ncp config.example.toml config.toml\n```\n\nOn Windows, use copy instead of cp. Then open config.toml and fill in the three things that matter, matching the provider block to your choice:\n\n``` Config: config.toml\n# 1. Stock footage\npexels_api_keys = [\"YOUR_PEXELS_KEY_HERE\"]\n\n# 2. Which LLM to use\nllm_provider = \"deepseek\" # or: openai, moonshot, ollama, g4f, pollinations, etc.\n\n# 3. That provider's key and base URL (block name matches llm_provider) [deepseek] api_key = \"YOUR_LLM_KEY_HERE\" base_url = \"https://api.deepseek.com\"model_name = \"deepseek-chat\"\n```\n\nEach provider has its own block in config.toml with the keys it needs, and the file is well-commented, so just fill in the block that matches your llm_provider.\n\n> For the free local lane, set llm_provider = \"ollama\", then in the [ollama] block set base_url to http://host.docker.internal:11434/v1 and model_name to whatever you've pulled (for example llama3.1:8b). Run ollama list to confirm."
+          },
+          {
+            "title": "Launch",
+            "text": "Use the prebuilt image (faster):\n\n``` Command: Launch (prebuilt image)\ndocker compose -f docker-compose.release.yml up\n```\n\nOr build it locally (slower, only needed if you've changed the code):\n\n``` Command: Launch (build locally)\ndocker compose up\n```\n\nThe first run pulls about 3 GB of layers, so give it 10 to 20 minutes. Two services come up: the web UI at http://localhost:8501 and the REST API with docs at http://localhost:8080/docs.\n\n> To manage it, run docker compose ps to see both containers, docker compose logs -f webui to watch the logs, and docker compose down to stop and clean up."
+          },
+          {
+            "title": "Make your first video",
+            "text": "Open http://localhost:8501 in your browser. In the Streamlit UI:\n\n1. Topic: type one keyword or short phrase, such as \"health\", \"morning routines\" or \"space facts\".\n2. Language and aspect ratio: pick English and 9:16 for Reels, Shorts and TikTok.\n3. Voice: start with en-US-AndrewNeural or any Edge TTS voice. They're free and sound natural.\n4. Subtitles: leave \"edge\" selected (fast, no GPU). Switch to \"whisper\" later if accuracy matters more than speed.\n5. Click Generate. The UI streams each stage: script, search terms, footage download, voiceover, subtitles, then the FFmpeg encode.\n\nThe output lands in storage/tasks/<task_id>/final-1.mp4.\n\n> If you see Chinese voices by default, the project is from a Chinese maintainer, so just pick an en-US voice in the dropdown. If it generates nothing or empty footage, it's almost always the Pexels key (check storage/logs/), or your topic is too abstract, so try a more concrete keyword."
+          },
+          {
+            "title": "Use the REST API (optional)",
+            "text": "To wire this into a pipeline instead of clicking the UI, the API docs are auto-generated at http://localhost:8080/docs. Every UI capability is a REST endpoint: submit a task, poll for the task_id, and download the MP4 when it's ready. Good for batch jobs or scheduled runs.\n\n>! The output is a draft, not publish-ready. Stock-footage relevance varies a lot, and abstract themes often pull odd clips, so always preview before posting. Pexels and Pixabay are royalty-free for most uses, but check each clip's license if you publish commercially or at scale (the task logs list the source URLs)."
+          }
+        ]
+      },
+      {
+        "type": "tool",
+        "label": "MoneyPrinterTurbo on GitHub",
+        "url": "https://github.com/harry0703/MoneyPrinterTurbo"
+      },
+      {
+        "type": "tool",
+        "label": "Pexels API",
+        "url": "https://www.pexels.com/api"
+      },
+      {
+        "type": "tool",
+        "label": "Docker Desktop",
+        "url": "https://www.docker.com/products/docker-desktop"
+      }
+    ],
+    "updatedAt": "2026-10-23T09:00:00.000Z",
+    "coverUrl": "covers/024.webp"
+  }
+]
